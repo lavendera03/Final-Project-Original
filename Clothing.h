@@ -29,6 +29,8 @@ class Clothing{
 
 };
 
+#endif
+
 class Top : public Clothing{
     public:
         Top(string color, bool pattern, int warmth_Level, bool raining, bool basic, int dressiness, int sleeve_length);
@@ -98,4 +100,3 @@ class Accessories : public Clothing{
         string type;
 };
 
-#endif
