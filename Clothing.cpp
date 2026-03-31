@@ -6,7 +6,7 @@
 using namespace std;
 
 //clothing constructor
-Clothing::Clothing(string color, bool pattern, int warmth_Level, bool raining, bool basic, int dressiness): color(color), pattern(pattern), warmth_Level(warmth_Level), raining(raining), basic(basic), dressiness(dressiness){}
+Clothing::Clothing(string name, string type, string color, bool pattern, int warmth_Level, bool raining, bool basic, int dressiness): name(name), type(type), color(color), pattern(pattern), warmth_Level(warmth_Level), raining(raining), basic(basic), dressiness(dressiness){}
 
 //clothing methods
 
@@ -30,13 +30,21 @@ int Clothing::getDressiness(){
     return dressiness;
 }
 
+string Clothing::getType(){
+    return type;
+}
+
+string Clothing::getName(){
+    return name;
+}
+
 //subclass constructors + methods 
 
-Top::Top(string color, bool pattern, int warmth_Level, bool raining, bool basic, int dressiness, int sleeve_length)
-    : Clothing(color, pattern, warmth_Level, raining, basic, dressiness),
+Top::Top(string name, string type, string color, bool pattern, int warmth_Level, bool raining, bool basic, int dressiness, string sleeve_length)
+    : Clothing(name, type, color, pattern, warmth_Level, raining, basic, dressiness),
       sleeve_length(sleeve_length) {}
 
-int Top::getSleeveLength(){
+string Top::getSleeveLength(){
     return sleeve_length;
 }
 
@@ -48,14 +56,14 @@ string Top::itemDescription(){
     else
         desc += ", and solid";
     desc += ", with a warmth level of " + to_string(getWarmth());
-    desc += ", and is " + to_string(sleeve_length);
+    desc += ", and is " + sleeve_length;
     desc += " sleeved,";
 
     return desc;
 }
 
-Bottom::Bottom(string color, bool pattern, int warmth_Level, bool raining, bool basic, int dressiness, bool shorts, bool skirt)
-    : Clothing(color, pattern, warmth_Level, raining, basic, dressiness),
+Bottom::Bottom(string name, string type, string color, bool pattern, int warmth_Level, bool raining, bool basic, int dressiness, bool shorts, bool skirt)
+    : Clothing(name, type, color, pattern, warmth_Level, raining, basic, dressiness),
       shorts(shorts), skirt(skirt) {}
 
 bool Bottom::getShort(){
@@ -84,8 +92,8 @@ string Bottom::itemDescription(){
     return desc;
 }
 
-Dress::Dress(string color, bool pattern, int warmth_Level, bool raining, bool basic, int dressiness, string length)
-    : Clothing(color, pattern, warmth_Level, raining, basic, dressiness),
+Dress::Dress(string name, string type, string color, bool pattern, int warmth_Level, bool raining, bool basic, int dressiness, string length)
+    : Clothing(name, type, color, pattern, warmth_Level, raining, basic, dressiness),
       length(length) {}
 
 string Dress::getLength(){
@@ -105,8 +113,8 @@ string Dress::itemDescription(){
     return desc;
 }
 
-Coat::Coat(string color, bool pattern, int warmth_Level, bool raining, bool basic, int dressiness, string length, bool waterproof)
-    : Clothing(color, pattern, warmth_Level, raining, basic, dressiness),
+Coat::Coat(string name, string type, string color, bool pattern, int warmth_Level, bool raining, bool basic, int dressiness, string length, bool waterproof)
+    : Clothing(name, type, color, pattern, warmth_Level, raining, basic, dressiness),
       length(length), waterproof(waterproof){}
 
 string Coat::getLength(){
@@ -132,8 +140,8 @@ string Coat::itemDescription(){
     return desc;
 }
 
-Shoes::Shoes(string color, bool pattern, int warmth_Level, bool raining, bool basic, int dressiness, bool openToe, bool heel, bool sneaker)
-    : Clothing(color, pattern, warmth_Level, raining, basic, dressiness),
+Shoes::Shoes(string name, string type, string color, bool pattern, int warmth_Level, bool raining, bool basic, int dressiness, bool openToe, bool heel, bool sneaker)
+    : Clothing(name, type, color, pattern, warmth_Level, raining, basic, dressiness),
       openToe(openToe), heel(heel), sneaker(sneaker) {}
 
 bool Shoes::getOpenToe(){
@@ -168,12 +176,12 @@ string Shoes::itemDescription(){
     return desc;
 }
 
-Accessories::Accessories(string color, bool pattern, int warmth_Level, bool raining, bool basic, int dressiness, string type)
-    : Clothing(color, pattern, warmth_Level, raining, basic, dressiness),
-      type(type) {}
+Accessories::Accessories(string name, string type, string color, bool pattern, int warmth_Level, bool raining, bool basic, int dressiness, string typeAC)
+    : Clothing(name, type, color, pattern, warmth_Level, raining, basic, dressiness),
+      typeAC(typeAC) {}
 
 string Accessories::getType(){
-    return type;
+    return typeAC;
 }
 
 string Accessories::itemDescription(){

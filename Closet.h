@@ -16,6 +16,7 @@ class Closet{
         vector<Clothing> generateOutfit(int dressiness, int avgTemp);
         void saveOutfit();
         void showOutfits();
+        Closet();
 
     private:
         vector<vector<Clothing>> savedOutfits;

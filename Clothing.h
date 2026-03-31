@@ -10,8 +10,10 @@ using namespace std;
 
 class Clothing{
     public:
-        Clothing(string color, bool pattern, int warmth_Level, bool raining, bool basic, int dressiness);
+        Clothing(string name, string type, string color, bool pattern, int warmth_Level, bool raining, bool basic, int dressiness);
         Clothing();
+        string getName();
+        string getType();
         string getColor();
         bool getPattern();
         int getWarmth();
@@ -26,6 +28,8 @@ class Clothing{
         bool raining;
         bool basic;
         int dressiness;
+        string type;
+        string name;
 
 };
 
@@ -33,16 +37,16 @@ class Clothing{
 
 class Top : public Clothing{
     public:
-        Top(string color, bool pattern, int warmth_Level, bool raining, bool basic, int dressiness, int sleeve_length);
-        int getSleeveLength();
+        Top(string name, string type, string color, bool pattern, int warmth_Level, bool raining, bool basic, int dressiness, string sleeve_length);
+        string getSleeveLength();
         string itemDescription();
     private:
-        int sleeve_length;
+        string sleeve_length;
 };
 
 class Bottom : public Clothing{
     public:
-        Bottom(string color, bool pattern, int warmth_Level, bool raining, bool basic, int dressiness, bool shorts, bool skirt);
+        Bottom(string name, string type, string color, bool pattern, int warmth_Level, bool raining, bool basic, int dressiness, bool shorts, bool skirt);
         bool getShort();
         bool getSkirt();
         string itemDescription();
@@ -55,7 +59,7 @@ class Bottom : public Clothing{
 
 class Dress : public Clothing{
     public:
-        Dress(string color, bool pattern, int warmth_Level, bool raining, bool basic, int dressiness, string length);
+        Dress(string name, string type, string color, bool pattern, int warmth_Level, bool raining, bool basic, int dressiness, string length);
         string getLength();
         string itemDescription();
     private:
@@ -65,7 +69,7 @@ class Dress : public Clothing{
 
 class Coat : public Clothing{
     public:
-        Coat(string color, bool pattern, int warmth_Level, bool raining, bool basic, int dressiness, string length, bool waterproof);
+        Coat(string name, string type, string color, bool pattern, int warmth_Level, bool raining, bool basic, int dressiness, string length, bool waterproof);
         string getLength();
         bool getWaterpoof();
         string itemDescription();
@@ -78,7 +82,7 @@ class Coat : public Clothing{
 
 class Shoes : public Clothing{
     public:
-        Shoes(string color, bool pattern, int warmth_Level, bool raining, bool basic, int dressiness, bool openToe, bool heel, bool sneaker);
+        Shoes(string name, string type, string color, bool pattern, int warmth_Level, bool raining, bool basic, int dressiness, bool openToe, bool heel, bool sneaker);
         bool getOpenToe();
         bool getHeel();
         bool getSneaker();
@@ -92,11 +96,11 @@ class Shoes : public Clothing{
 
 class Accessories : public Clothing{
     public:
-        Accessories(string color, bool pattern, int warmth_Level, bool raining, bool basic, int dressiness, string type);
+        Accessories(string name, string type, string color, bool pattern, int warmth_Level, bool raining, bool basic, int dressiness, string typeAC);
         string itemDescription();
         string getType();
 
     private:
-        string type;
+        string typeAC;
 };
 
