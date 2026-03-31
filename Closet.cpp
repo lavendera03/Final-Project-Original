@@ -179,21 +179,17 @@ void Closet<T>::addClothing() {
         closetItems.push_back(newShoes);
     }
 
+
+}
+
+template <typename T>
+void Closet<T>::removeItem(string name) {
     
 }
 
 template <typename T>
-void Closet<T>::removeItem(int idx) {
-/* FUNCTION DESCRIPTION
-        - PARAMETER: PARAMETER DESCRIPTION
-    */
-}
-
-template <typename T>
 vector<Clothing> Closet<T>::generateOutfit(int dressiness, int avgTemp) {
-/* FUNCTION DESCRIPTION
-        - PARAMETER: PARAMETER DESCRIPTION
-    */
+
 }
 
 

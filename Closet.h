@@ -12,7 +12,7 @@ class Closet{
     public:
         //void addClothing(string itemType, vector<T> itemAttributes);
        void addClothing();
-        void removeItem(int idx);
+        void removeItem(string name);
         void showCloset();
         vector<Clothing> generateOutfit(int dressiness, int avgTemp);
         void saveOutfit(vector<Clothing> newOutfit);
