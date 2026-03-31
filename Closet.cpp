@@ -184,7 +184,21 @@ void Closet<T>::addClothing() {
 
 template <typename T>
 void Closet<T>::removeItem(string name) {
-    
+    int i = 0;
+    bool exists = false;
+    for(int i; i < closetItems.size(); i++ ){
+        if(closetItems[i].name() == name){
+            exists = true;
+            break;
+        }
+    }
+    if(exists){
+        closetItems.erase(closetItems.begin() + i);
+    }
+    else{
+        cout << "An item with that name was not found in your closet"
+    }
+
 }
 
 template <typename T>
