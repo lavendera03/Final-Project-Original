@@ -73,7 +73,8 @@ void Closet<T>::addClothing() {
         patty = true;
     }
 
-    cout << "On a scale 1-5 how warm is your item" << endl;
+    cout << "On a scale 0-5 how warm is your item" << endl;
+    cout << "With 5 being not warm at all and 0 being very warm" << endl;
     int warmth;
     getline(cin, warmth);
 
@@ -187,7 +188,7 @@ void Closet<T>::removeItem(string name) {
     int i = 0;
     bool exists = false;
     for(int i; i < closetItems.size(); i++ ){
-        if(closetItems[i].name() == name){
+        if(closetItems[i].getName() == name){
             exists = true;
             break;
         }
@@ -203,6 +204,75 @@ void Closet<T>::removeItem(string name) {
 
 template <typename T>
 vector<Clothing> Closet<T>::generateOutfit(int dressiness, int avgTemp) {
+
+    vector<Clothing> outfit;
+    vector<Clothing> tops;
+    vector<Clothing> bottoms;
+    vector<Clothing> shoes;
+
+    for(int i =0; i < closetItems.size(); i ++){
+        if(closetItems[i].getName == "top"){
+            tops += closetItems[i];
+        }
+        if(closetItems[i].getName == "bottom"){
+            bottoms += closetItems[i];
+        }
+        if(closetItems[i].getName == "shoe"){
+            shoes += closetItems[i];
+        }
+    }
+
+    int minDress = dressiness - 1;
+    int maxDress = dressiness + 1;
+
+    //removing items that are not the appropriate level of dressy
+    for(int i = 0; i < tops.size(); i++){
+        if((minDress < dressiness < maxDress) = false){
+            tops.erase(tops.begin() + i);
+        }
+    }
+
+    for(int i = 0; i < bottoms.size(); i++){
+        if((minDress < dressiness < maxDress) = false){
+            bottoms.erase(bottoms.begin() + i);
+        }
+    }
+
+    for(int i = 0; i < shoes.size(); i++){
+        if((minDress < dressiness < maxDress) = false){
+            shoes.erase(shoes.begin() + i);
+        }
+    }
+
+    //removing inappropriate weather items 
+
+    for(int i = 0; i < tops.size(); i++){
+        int wamrth = tops[i].getWarmth() * 15;
+        if((avgTemp - 10 <= warmth <= avgTemp + 10) = false){
+            tops.erase(tops.begin() + i);
+        }
+    }
+
+    for(int i = 0; i < bottoms.size(); i++){
+        int wamrth = bottoms[i].getWarmth() * 15;
+        if((avgTemp - 10 <= warmth <= avgTemp + 10) = false){
+            bottoms.erase(bottoms.begin() + i);
+        }
+    }
+
+    for(int i = 0; i < shoes.size(); i++){
+        int wamrth = shoes[i].getWarmth() * 15;
+        if((avgTemp - 10 <= warmth <= avgTemp + 10) = false){
+            shoes.erase(shoes.begin() + i);
+        }
+    }
+
+    int top = tops.size();
+    int bottom = bottoms.size();
+    int shoe = shoes.size();
+
+    
+
 
 }
 
