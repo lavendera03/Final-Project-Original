@@ -29,8 +29,8 @@ int main(){
     // -------------------- USERNAME AND PASSWORD --------------------
     string user_name; string password;
     cout << "Welcome to the Forecast Fits!" << endl;
-    cout << "Please enter/create your username: " << endl; getline(cin, user_name);
-    cout << "Please enter/create your password: " << endl; getline(cin, password);
+    cout << "Please enter/create your username: " ; getline(cin, user_name);
+    cout << "Please enter/create your password: " ; getline(cin, password);
     Closet<Clothing> user_closet; 
 
 
