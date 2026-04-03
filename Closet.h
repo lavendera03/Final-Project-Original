@@ -83,13 +83,43 @@ void Closet<T>::showOutfits() {
 template <typename T>
 void Closet<T>::addClothing() {
 
+    cout << "Answer these questions about your item!" << endl;
+    string test;
+    getline(cin, test);
+
     cout << "Enter a name for your item" << endl;
     string name;
     getline(cin, name);
 
-    cout << "Enter the type of your item" << endl;
+    cout << "What kind of clothing is your item?" << endl;
+    cout << "1. Top" << endl;
+    cout << "2. Bottom" << endl;
+    cout << "3. Dress" << endl;
+    cout << "4. Accesory" << endl;
+    cout << "5. Coat" << endl;
+    cout << "6. Shoes" << endl;
     string type;
-    getline(cin, type);
+    int numtype;
+    cin >> numtype;
+    cin.ignore();
+    if(numtype == 1){
+        type = "Top";
+    }
+    if(numtype == 2){
+        type = "Bottom";
+    }
+    if(numtype == 3){
+        type = "Dress";
+    }
+    if(numtype == 4){
+        type = "Accessory";
+    }
+    if(numtype == 5){
+        type = "Coat";
+    }
+    if(numtype == 6){
+        type = "Shoes";
+    }
 
     cout << "Enter the color of your item" << endl;
     string color;
@@ -167,7 +197,7 @@ void Closet<T>::addClothing() {
     }
     
 
-     else if (type == "Accessories") { 
+     else if (type == "Accessory") { 
         cout << "What type of accesory is this " << endl;
         string typpe;
         getline(cin, typpe);

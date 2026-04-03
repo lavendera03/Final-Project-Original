@@ -43,10 +43,15 @@ int main(){
         } else if (choice == 1) { // ADD CLOTHING ITEM 
             user_closet.addClothing();
         } else if (choice == 2) { // REMOVE CLOTHING ITEM
+            string test;
+            getline(cin, test);
             string itemToRemove;
-            cout << "What item do you want to remove?: " << endl; getline(cin, itemToRemove);
+            cout << "What item do you want to remove?: " << endl; 
+            getline(cin, itemToRemove);
             user_closet.removeItem(itemToRemove);
         } else if (choice == 3) { // GENERATE OUTFIT
+            string test;
+            getline(cin, test);
             string dressinessLevel;
             int temp;
             cout << "Please enter dressiness: " << endl; getline(cin, dressinessLevel);
