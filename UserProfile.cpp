@@ -74,5 +74,3 @@ bool UserProfile::loadFromFile() {
     getline(file, zipCode);
     return true;
 }
-
-//hi
