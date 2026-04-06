@@ -72,7 +72,7 @@ bool UserProfile::loadFromFile() {
     getline(file, username);
     getline(file, password);
     getline(file, zipCode);
-    return true;
+    //return true;
 
     // load user's clothing items
     string line;

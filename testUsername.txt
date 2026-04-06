@@ -1,4 +1,5 @@
 testUsername
 testPassword
 23173
-Top,white top,Top,white,0,2,1,1,1,2
+Shoes,syd shoes,Shoes,blue,0,0,0,0,4,0,0,0
+Top, syds shirt, Top, blue, 1, 0, 0, 1, 4, 1
