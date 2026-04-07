@@ -58,7 +58,7 @@ int main(){
             string test;
             getline(cin, test);
             string itemToRemove;
-            cout << "What item do you want to remove?: " << endl; 
+            cout << "What item do you want to remove?: \n> " << endl; 
             getline(cin, itemToRemove);
             user_closet.removeItem(itemToRemove);
             profile.saveToFile();
@@ -67,10 +67,10 @@ int main(){
             getline(cin, test);
             int dressinessLevel;
             int temp;
-            cout << "Please enter dressiness: " << endl; 
+            cout << "Please enter dressiness: \n> " << endl; 
             cin >> dressinessLevel;
             cin.ignore();
-            cout << "Please average temperature: " << endl; 
+            cout << "Please average temperature: \n> " << endl; 
             cin >> temp;
             cin.ignore();
             vector<Clothing*> outfit = user_closet.generateOutfit(dressinessLevel, temp);
@@ -85,14 +85,14 @@ int main(){
             vector<Clothing*> outfitItems;
             string user_input;
             while (true) {
-                cout << "What item do you want to add to this outfit?: " << endl; getline(cin, user_input);
+                cout << "What item do you want to add to this outfit?: \n> " << endl; getline(cin, user_input);
                 if (user_input == "Done") { 
                     break;
                 } else if (check_valid(user_input, user_closet.closetItems)) {
                     outfitItems.push_back(get_Item(user_input, user_closet.closetItems));
                     cout << user_input << " was added to this outfit." << endl;
                 } else if (!check_valid(user_input, user_closet.closetItems)) {
-                    cout << "That item does not exist in the closet. Please enter a valid item: " << endl;
+                    cout << "That item does not exist in the closet. Please enter a valid item: \n> " << endl;
                 }
             }
             user_closet.saveOutfit(outfitItems);

@@ -88,7 +88,7 @@ void Closet<T>::addClothing() {
     // string test;
     // getline(cin, test);
 
-    cout << "Enter a name for your item" << endl;
+    cout << "Enter a name for your item: \n> ";
     string name;
     getline(cin, name);
 
@@ -98,7 +98,7 @@ void Closet<T>::addClothing() {
     cout << "3. Dress" << endl;
     cout << "4. Accesory" << endl;
     cout << "5. Coat" << endl;
-    cout << "6. Shoes" << endl;
+    cout << "6. Shoes \n> ";
     string type;
     int numtype;
     cin >> numtype;
@@ -122,11 +122,11 @@ void Closet<T>::addClothing() {
         type = "Shoes";
     }
 
-    cout << "Enter the color of your item" << endl;
+    cout << "Enter the color of your item:  \n> ";
     string color;
     getline(cin, color);
 
-    cout << "Enter yes if your item is patterned if not enter no" << endl;
+    cout << "Enter if your item is patterned (yes/no): \n> ";
     string patt;
     getline(cin, patt);
     bool patty = false;
@@ -134,14 +134,14 @@ void Closet<T>::addClothing() {
         patty = true;
     }
 
-    cout << "On a scale 0-5 how warm is your item" << endl;
-    cout << "With 5 being not warm at all and 0 being very warm" << endl;
+    cout << "Enter the warmth level of your item on a scale of 0 to 5" << endl;
+    cout << "With 5 being not warm at all and 0 being very warm: \n> ";
     int warmth;
     cin >> warmth;
     cin.ignore();
 
 
-    cout << "Enter yes if you would wear this item in the rain" << endl;
+    cout << "Would you wear this item in the rain (yes/no): \n> ";
     string rain;
     getline(cin, rain);
     bool rainy = false;
@@ -149,7 +149,7 @@ void Closet<T>::addClothing() {
         rainy = true;
     }
 
-    cout << "Enter yes if you would consider this item to be a basic" << endl;
+    cout << "Would you consider this item to be a basic: \n> ";
     string basic;
     getline(cin, basic);
     bool bassic = false;
@@ -157,14 +157,15 @@ void Closet<T>::addClothing() {
         bassic = true;
     }
 
-    cout << "On a scale 1-5 how dressy is your item: " << endl;
+    cout << "Enter the dressiness of your item on a scale of 1 to 5" << endl;
+    cout << "With 1 being not dressy at all and 5 being very dressy: \n> ";
     int dressy;
     cin >> dressy;
     cin.ignore();
 
 
     if (type == "Top" ) { 
-        cout << "Is your top 1 long sleeve, 2 short sleeve, or 3 sleevless. Enter a number: " << endl;
+        cout << "Is your top \n1) long sleeve \n2) short sleeve  \n3) sleevless \n> ";
         int length;
         cin >> length;
         cin.ignore();
@@ -172,14 +173,14 @@ void Closet<T>::addClothing() {
     }
     
      else if (type == "Bottom"){
-        cout << "Enter yes if this item is shorts" << endl;
+        cout << "Is this item a pair of shorts (yes/no): \n> ";
         string isShort;
         getline(cin, isShort);
         bool shorty = false;
         if (isShort == "yes"){
             shorty = true;
         }
-        cout << "Enter yes if this item is a skirt" << endl;
+        cout << "Is this item a skirt (yes/no): \n> ";
         string skirt;
         getline(cin, skirt);
         bool skirty = false;
@@ -191,7 +192,7 @@ void Closet<T>::addClothing() {
     
 
     else if (type == "Dress") {
-        cout << "How long is your dress" << endl;
+        cout << "How long is your dress: \n> ";
         string length;
         getline(cin, length);
         closetItems.push_back(new Dress(name, type, color, patty, warmth, rainy, bassic, dressy, length));
@@ -199,7 +200,7 @@ void Closet<T>::addClothing() {
     
 
      else if (type == "Accessory") { 
-        cout << "What type of accesory is this " << endl;
+        cout << "What type of accesory is this: \n> ";
         string typpe;
         getline(cin, typpe);
         closetItems.push_back(new Accessories(name, type, color, patty, warmth, rainy, bassic, dressy, typpe));
@@ -208,11 +209,11 @@ void Closet<T>::addClothing() {
     
     else if (type == "Coat") { 
         string length;
-        cout << "Enter coat length: ";
+        cout << "Enter coat length: \n> ";
         getline(cin, length);
 
         bool waterproof;
-        cout << "Waterproof? (yes/no): ";
+        cout << "Is this item waterproof (yes/no): \n> ";
         string wp;
         getline(cin, wp);
         waterproof = (wp == "yes");
@@ -221,7 +222,7 @@ void Closet<T>::addClothing() {
     
     
     else if (type == "Shoes") { 
-        cout << "Enter yes if these shoes are open toe" << endl;
+        cout << "Are these shoes open toed (yes/no): \n> ";
         string open;
         getline(cin, open);
         bool openToe = false;
@@ -229,7 +230,7 @@ void Closet<T>::addClothing() {
             openToe = true;
         }
 
-        cout << "Enter yes if these shoes are heels" << endl;
+        cout << "Do these shoes have a heel (yes/no): \n> ";
         string heel;
         getline(cin, heel);
         bool heely = false;
@@ -237,7 +238,7 @@ void Closet<T>::addClothing() {
             heely = true;
         }
 
-        cout << "Enter yes if these shoes ar athletic sneakers" << endl;
+        cout << "Are these shoes athletic sneakers (yes/no): \n> ";
         string sneak;
         getline(cin, sneak);
         bool sneaky = false;
