@@ -280,6 +280,7 @@ vector<Clothing*> Closet<T>::generateOutfit(int dressiness, int avgTemp) {
     vector<Clothing*> tops;
     vector<Clothing*> bottoms;
     vector<Clothing*> shoes;
+    vector<Clothing*> coats;
 
     for(int i =0; i < closetItems.size(); i ++){
         if(closetItems[i]->getType() == "Top"){
@@ -290,6 +291,9 @@ vector<Clothing*> Closet<T>::generateOutfit(int dressiness, int avgTemp) {
         }
         if(closetItems[i]->getType() == "Shoes"){
             shoes.push_back(closetItems[i]);
+        }
+        if(closetItems[i]->getType() == "Coat"){
+            coats.push_back(closetItems[i]);
         }
     }
 
@@ -315,6 +319,12 @@ vector<Clothing*> Closet<T>::generateOutfit(int dressiness, int avgTemp) {
         }
     }
 
+    for(int i = coats.size() - 1; i >= 0; i--){
+        if(!(coats[i]->getDressiness() >= minDress && coats[i]->getDressiness() <= maxDress)){
+            coats.erase(coats.begin() + i);
+        }
+    }
+
     //removing inappropriate weather items 
 
     for(int i = tops.size() - 1; i >= 0; i--){
@@ -324,23 +334,33 @@ vector<Clothing*> Closet<T>::generateOutfit(int dressiness, int avgTemp) {
         }
     }
 
+    for(int i = coats.size() - 1; i >= 0; i--){
+        int warmth = coats[i]->getWarmth() * 15;
+        if(!(warmth >= avgTemp - 10 && warmth <= avgTemp + 10)){
+            coats.erase(coats.begin() + i);
+        }
+    }
+
     for(int i = bottoms.size() - 1; i >= 0; i--){
         int warmth = bottoms[i]->getWarmth() * 15;
-        if(!(warmth >= avgTemp - 10 && warmth <= avgTemp + 10)){
+        if(bottoms[i]->getWarmth() == 3){
+            continue;
+        }
+        else if(!(warmth >= avgTemp - 10 && warmth <= avgTemp + 10)){
             bottoms.erase(bottoms.begin() + i);
         }
     }
 
     for(int i = shoes.size() - 1; i >= 0; i--){
         int warmth = shoes[i]->getWarmth() * 15;
-        if(!(warmth >= avgTemp - 10 && warmth <= avgTemp + 10)){
+        if(shoes[i]->getWarmth() == 3){
+            continue;
+        }
+        else if(!(warmth >= avgTemp - 10 && warmth <= avgTemp + 10)){
             shoes.erase(shoes.begin() + i);
         }
     }
 
-    int top = tops.size() - 1;
-    int bottom = bottoms.size() - 1;
-    int shoe = shoes.size() - 1;
 
     random_device rd;
     mt19937 gen(rd());
@@ -367,6 +387,10 @@ vector<Clothing*> Closet<T>::generateOutfit(int dressiness, int avgTemp) {
     outfit.push_back(tops[rand() % tops.size()]);
     outfit.push_back(bottoms[rand() % bottoms.size()]);
     outfit.push_back(shoes[rand() % shoes.size()]);
+
+    if(avgTemp < 50){
+        outfit.push_back(coats[rand() % coats.size()]);
+    }
 
     return outfit;
 }

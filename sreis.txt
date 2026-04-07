@@ -1,0 +1,15 @@
+sreis
+sreis123
+02905
+Bottom,abercrombie jeans,Bottom,blue,0,3,0,1,3,0,0
+Bottom,anthro jeans,Bottom,blue,0,3,0,1,3,0,0
+Bottom,free people jeans,Bottom,white,0,3,0,1,3,0,0
+Top,anthro white sweater,Top,white,0,1,0,0,3,1
+Top,checked tank,Top,blue,1,4,0,0,3,3
+Top,anthro floral blouse,Top,white,1,4,0,0,4,2
+Top,abercrombie black tank,Top,black,0,5,0,1,3,3
+Shoes,1,Shoes,blue,0,3,0,1,3,0,0,0
+Shoes,hokas,Shoes,white,0,4,0,0,1,0,0,1
+Top,lulu tank,Top,orange,0,5,0,0,1,2
+Bottom,lulu navy shorts,Bottom,navy,0,4,0,1,1,1,0
+Bottom,jean shorts,Bottom,blue,0,4,0,1,3,1,0
