@@ -14,4 +14,4 @@ user: UserProfile.cpp UserProfile.h Closet.h Clothing.h
 	g++ -c UserProfile.cpp -o user.o
 
 clean:
-	rm -f main clothing.o auth.o user.o
+	rm -f ForecastFits clothing.o auth.o user.o
