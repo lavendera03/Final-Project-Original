@@ -3,25 +3,6 @@
 #include <fstream>
 using namespace std;
 
-bool AuthSystem::showLoginMenu(UserProfile& profile) {
-    int choice;
-    cout << "\n===== ForecastFits =====\n";
-    cout << "1. Login\n";
-    cout << "2. Sign Up\n";
-    cout << "3. Exit\n";
-    cout << "\nChoice: ";
-    cin >> choice;
-    cin.ignore();
-
-    if (choice == 1) {
-        return handleLogin(profile);
-    }
-    if (choice == 2) {
-        return handleSignup(profile);
-    }
-    return false;
-}
-
 bool AuthSystem::handleLogin(UserProfile& profile) {
     string username, password;
     cout << "\n-- Login --\n";

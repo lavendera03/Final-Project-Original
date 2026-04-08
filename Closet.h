@@ -40,7 +40,7 @@ Closet<T>::Closet() {}
 template <typename T>
 void Closet<T>::showCloset() {
 /* Shows the item name and description for each item in the user's closet */
-    cout << "----- CLOSET -----" << endl;
+    cout << "\n----- CLOSET -----" << endl;
     if (closetItems.empty()) {
         cout << "(empty)" << endl;
     } else {
@@ -65,7 +65,7 @@ void Closet<T>::saveOutfit(vector<Clothing*> newOutfit) {
 template <typename T>
 void Closet<T>::showOutfits() {
 /* Outputs all of the outfits that the user has saved */
-    cout << "----- SAVED OUTFITS -----" << endl;
+    cout << "\n----- SAVED OUTFITS -----" << endl;
     if (savedOutfits.empty()) {
         cout << "(No saved outfits)" << endl;
     } else {
@@ -84,7 +84,7 @@ void Closet<T>::showOutfits() {
 template <typename T>
 void Closet<T>::addClothing() {
 
-    cout << "Answer these questions about your item!\n" << endl;
+    cout << "\n==============================\nAnswer these questions about your item!\n" << endl;
     // string test;
     // getline(cin, test);
 
@@ -92,7 +92,7 @@ void Closet<T>::addClothing() {
     string name;
     getline(cin, name);
 
-    cout << "What kind of clothing is your item?" << endl;
+    cout << "\nWhat kind of clothing is your item?" << endl;
     cout << "1. Top" << endl;
     cout << "2. Bottom" << endl;
     cout << "3. Dress" << endl;
@@ -122,11 +122,11 @@ void Closet<T>::addClothing() {
         type = "Shoes";
     }
 
-    cout << "Enter the color of your item:  \n> ";
+    cout << "\nEnter the color of your item:  \n> ";
     string color;
     getline(cin, color);
 
-    cout << "Enter if your item is patterned (yes/no): \n> ";
+    cout << "\nEnter if your item is patterned (yes/no): \n> ";
     string patt;
     getline(cin, patt);
     bool patty = false;
@@ -134,14 +134,13 @@ void Closet<T>::addClothing() {
         patty = true;
     }
 
-    cout << "Enter the warmth level of your item on a scale of 0 to 5" << endl;
-    cout << "With 5 being not warm at all and 0 being very warm: \n> ";
+    cout << "\nEnter the warmth level of your item on a scale of 0 to 5, with 5 being not warm at all and 0 being very warm: \n> ";
     int warmth;
     cin >> warmth;
     cin.ignore();
 
 
-    cout << "Would you wear this item in the rain (yes/no): \n> ";
+    cout << "\nWould you wear this item in the rain (yes/no): \n> ";
     string rain;
     getline(cin, rain);
     bool rainy = false;
@@ -149,7 +148,7 @@ void Closet<T>::addClothing() {
         rainy = true;
     }
 
-    cout << "Would you consider this item to be a basic: \n> ";
+    cout << "\nWould you consider this item to be a basic (yes/no): \n> ";
     string basic;
     getline(cin, basic);
     bool bassic = false;
@@ -157,15 +156,14 @@ void Closet<T>::addClothing() {
         bassic = true;
     }
 
-    cout << "Enter the dressiness of your item on a scale of 1 to 5" << endl;
-    cout << "With 1 being not dressy at all and 5 being very dressy: \n> ";
+    cout << "\nEnter the dressiness of your item on a scale of 1 to 5, with 1 being not dressy at all and 5 being very dressy: \n> ";
     int dressy;
     cin >> dressy;
     cin.ignore();
 
 
     if (type == "Top" ) { 
-        cout << "Is your top \n1) long sleeve \n2) short sleeve  \n3) sleevless \n> ";
+        cout << "\nIs your top \n1) long sleeve \n2) short sleeve  \n3) sleevless \n> ";
         int length;
         cin >> length;
         cin.ignore();
@@ -173,14 +171,14 @@ void Closet<T>::addClothing() {
     }
     
      else if (type == "Bottom"){
-        cout << "Is this item a pair of shorts (yes/no): \n> ";
+        cout << "\nIs this item a pair of shorts (yes/no): \n> ";
         string isShort;
         getline(cin, isShort);
         bool shorty = false;
         if (isShort == "yes"){
             shorty = true;
         }
-        cout << "Is this item a skirt (yes/no): \n> ";
+        cout << "\nIs this item a skirt (yes/no): \n> ";
         string skirt;
         getline(cin, skirt);
         bool skirty = false;
@@ -192,7 +190,7 @@ void Closet<T>::addClothing() {
     
 
     else if (type == "Dress") {
-        cout << "How long is your dress: \n> ";
+        cout << "\nHow long is your dress: \n> ";
         string length;
         getline(cin, length);
         closetItems.push_back(new Dress(name, type, color, patty, warmth, rainy, bassic, dressy, length));
@@ -200,7 +198,7 @@ void Closet<T>::addClothing() {
     
 
      else if (type == "Accessory") { 
-        cout << "What type of accesory is this: \n> ";
+        cout << "\nWhat type of accesory is this: \n> ";
         string typpe;
         getline(cin, typpe);
         closetItems.push_back(new Accessories(name, type, color, patty, warmth, rainy, bassic, dressy, typpe));
@@ -209,11 +207,11 @@ void Closet<T>::addClothing() {
     
     else if (type == "Coat") { 
         string length;
-        cout << "Enter coat length: \n> ";
+        cout << "\nEnter coat length: \n> ";
         getline(cin, length);
 
         bool waterproof;
-        cout << "Is this item waterproof (yes/no): \n> ";
+        cout << "\nIs this item waterproof (yes/no): \n> ";
         string wp;
         getline(cin, wp);
         waterproof = (wp == "yes");
@@ -222,7 +220,7 @@ void Closet<T>::addClothing() {
     
     
     else if (type == "Shoes") { 
-        cout << "Are these shoes open toed (yes/no): \n> ";
+        cout << "\nAre these shoes open toed (yes/no): \n> ";
         string open;
         getline(cin, open);
         bool openToe = false;
@@ -230,7 +228,7 @@ void Closet<T>::addClothing() {
             openToe = true;
         }
 
-        cout << "Do these shoes have a heel (yes/no): \n> ";
+        cout << "\nDo these shoes have a heel (yes/no): \n> ";
         string heel;
         getline(cin, heel);
         bool heely = false;
@@ -238,7 +236,7 @@ void Closet<T>::addClothing() {
             heely = true;
         }
 
-        cout << "Are these shoes athletic sneakers (yes/no): \n> ";
+        cout << "\nAre these shoes athletic sneakers (yes/no): \n> ";
         string sneak;
         getline(cin, sneak);
         bool sneaky = false;
@@ -266,7 +264,7 @@ void Closet<T>::removeItem(string name) {
         closetItems.erase(closetItems.begin() + index);
     }
     else{
-        cout << "An item with that name was not found in your closet";
+        cout << "\nAn item with that name was not found in your closet";
     }
 
 }
@@ -400,7 +398,7 @@ vector<Clothing*> Closet<T>::generateOutfit(int dressiness, int avgTemp) {
     bool canDressOutfit = !dresses.empty() && !shoes.empty();
 
     if (!canTopOutfit && !canDressOutfit) {
-        cout << "Not enough matching items to generate an outfit." << endl;
+        cout << "\n\nYour closet has too few matching items to generate an outfit." << endl;
         return outfit;
     }
 

@@ -7,9 +7,7 @@
 #include "AuthSystem.h"
 
 using namespace std;
-
-int main_menu();
-
+// -------------------- HELPER METHODS --------------------
 bool check_valid(string item, vector<Clothing*> closetItems) {
     bool exists;
     for (int i=0; i < closetItems.size(); i++){
@@ -27,26 +25,33 @@ Clothing* get_Item(string item_name, vector<Clothing*> closetItems) {
     } return nullptr;
 }
 
-int main(){
+int login_menu();
+int main_menu();
+
+// -------------------- NAVIGATING MAIN MENU --------------------
+int main() {
     UserProfile profile;
     AuthSystem auth;
     bool loggedIn = false;
 
-    // -------------------- LOGGING IN --------------------
-
+    // -------------------- LOGGING IN / SIGNING UP --------------------
     while (!loggedIn) {
-        loggedIn = auth.showLoginMenu(profile);
-        if (!loggedIn) {
-            // showLoginMenu returns false on Exit (choice 3)
+        int login_choice = login_menu();
+        if (login_choice == 0) { // Exiting program
             cout << "Goodbye!" << endl;
-            return 0;
+            return false;
+        } else if (login_choice == 1) { // Logging in
+            loggedIn = auth.handleLogin(profile);
+        } else if (login_choice == 2) { // Signing up 
+            loggedIn = auth.handleSignup(profile);
+        } else if (login_choice > 2) { 
+            cout << "Invalid Input. Please enter one of the indices listed below." << endl;
         }
     }
-    Closet<Clothing>& user_closet = profile.getCloset(); 
 
-
-    // -------------------- MAIN LOOP --------------------
-    while (true) {
+     // -------------------- NAVIGATING MAIN MENU --------------------
+    Closet<Clothing>& user_closet = profile.getCloset();
+    while(true) {
         int choice = main_menu();
         if (choice == 0){
             profile.logout();
@@ -54,28 +59,26 @@ int main(){
         } else if (choice == 1) { // ADD CLOTHING ITEM 
             user_closet.addClothing();
             profile.saveToFile();
+            cout << "\n +++++Your clothing item has been added!+++++" << endl;
         } else if (choice == 2) { // REMOVE CLOTHING ITEM
-            string test;
-            getline(cin, test);
             string itemToRemove;
-            cout << "What item do you want to remove?: \n> " << endl; 
+            cout << "\nWhat item do you want to remove?: \n> "; 
             getline(cin, itemToRemove);
             user_closet.removeItem(itemToRemove);
             profile.saveToFile();
+            cout << "\n+++++ " << itemToRemove << " has been removed from your closet!+++++" << endl;
         } else if (choice == 3) { // GENERATE OUTFIT
-            string test;
-            getline(cin, test);
             int dressinessLevel;
             int temp;
-            cout << "Please enter dressiness: \n> " << endl; 
+            cout << "\nPlease enter dressiness: \n> "; 
             cin >> dressinessLevel;
             cin.ignore();
-            cout << "Please average temperature: \n> " << endl; 
+            cout << "\nPlease average temperature: \n> "; 
             cin >> temp;
             cin.ignore();
             vector<Clothing*> outfit = user_closet.generateOutfit(dressinessLevel, temp);
             if (outfit.empty()) {
-                cout << "Could not generate an outfit with your current closet." << endl;
+                cout << "To use this feature please input more clothing items." << endl;
             } else {
                 for (Clothing* item : outfit) {
                     cout << item->getName() << ": " << item->itemDescription() << endl;
@@ -85,14 +88,14 @@ int main(){
             vector<Clothing*> outfitItems;
             string user_input;
             while (true) {
-                cout << "What item do you want to add to this outfit?: \n> " << endl; getline(cin, user_input);
+                cout << "What item do you want to add to this outfit?: \n> "; getline(cin, user_input);
                 if (user_input == "Done") { 
                     break;
                 } else if (check_valid(user_input, user_closet.closetItems)) {
                     outfitItems.push_back(get_Item(user_input, user_closet.closetItems));
                     cout << user_input << " was added to this outfit." << endl;
                 } else if (!check_valid(user_input, user_closet.closetItems)) {
-                    cout << "That item does not exist in the closet. Please enter a valid item: \n> " << endl;
+                    cout << "That item does not exist in the closet. Please enter a valid item: \n> ";
                 }
             }
             user_closet.saveOutfit(outfitItems);
@@ -116,6 +119,19 @@ int main_menu() { // Main Menu Options
     cout << "5. Show Saved Outfits" << endl;
     cout << "6. Show Items in Closet" << endl;
     cout << "0. Exit" << endl;
+    cout << "==============================" << endl;
+    cout << "Please choose an option: \n> ";
+    int choice;
+    cin >> choice;
+    cin.ignore();
+    return choice;
+}
+
+int login_menu() { // Login Menu Options
+    cout << "\n===== ForecastFits =====\n";
+    cout << "1. Login\n";
+    cout << "2. Sign Up\n";
+    cout << "0. Exit\n";
     cout << "==============================" << endl;
     cout << "Please choose an option: \n> ";
     int choice;

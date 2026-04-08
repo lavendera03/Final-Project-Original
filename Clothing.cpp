@@ -53,7 +53,7 @@ string Top::getSleeveLength(){
 }
 
 string Top::itemDescription(){
-    string desc = "This top is: ";
+    string desc = "This top is ";
     desc += getColor();
     if (getPattern())
         desc += ", and patterned";
@@ -86,7 +86,7 @@ bool Bottom::getSkirt(){
 }
 
 string Bottom::itemDescription(){
-    string desc = "This bottom is: ";
+    string desc = "This bottom is ";
     desc += getColor();
     if (getPattern())
         desc += ", and patterned";
@@ -120,7 +120,7 @@ string Dress::getLength(){
 }
 
 string Dress::itemDescription(){
-    string desc = "This dress is: ";
+    string desc = "This dress is ";
     desc += getColor();
     if (getPattern())
         desc += ", and patterned";
@@ -152,7 +152,7 @@ bool Coat::getWaterproof(){
 }
 
 string Coat::itemDescription(){
-    string desc = "This coat is: ";
+    string desc = "This coat is ";
     desc += getColor();
     if (getPattern())
         desc += ", and patterned";
@@ -190,7 +190,7 @@ bool Shoes::getSneaker(){
 }
 
 string Shoes::itemDescription(){
-    string desc = "These shoes are: ";
+    string desc = "These shoes are ";
     desc += getColor();
     if(getHeel()){
         desc += " heels, ";
@@ -226,9 +226,8 @@ string Accessories::getType(){
 }
 
 string Accessories::itemDescription(){
-    string desc = "This accesory is : ";
+    string desc = "This accesory is a ";
     desc += getColor();
-    desc += " and ";
     desc += getType();
    
     return desc;
