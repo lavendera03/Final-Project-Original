@@ -108,50 +108,50 @@ Like I said in #1, some small issues, but overall pretty clear.`
 #### Pre-Questionnaire
 1.  *How do you decide what to wear on a regular day?*
 
-    ```blah.```
+    "I look at the weather for the day and I look in my closet, figure out what I have. I don't really try to match."
 
 2. *How long does it typically take you to pick out an outfit?*
 
-    ```blah.```
+    "One to two minutes."
 
 3. *Do you tend to re-wear the same few outfits repeatedly?*
 
-    ```blah.```
+    "Yes."
 
 4. *Do you check the weather app when deciding what to wear?*
 
-    ```blah.```
+    "Yes."
 
 5. *How important is it to you that your outfit matches or coordinates?*
 
-    ```blah.```
+    "It's pretty important."
 
 
 #### Post-Questionnaire
 
 1.  *How user-friendly was adding/removing clothing?*
 
-    ```blah.```
+    "I wish there was one button I could click to go back a question. Other than that, it was very easy."
 
 2. *How did you feel about the outfits generated? Would you wear them in real life? Were they appropriate for the dressiness/occasion and weather?*
 
-    ```blah.```
+    "Yes, I would wear them in real life. I feel like I needed to add more clothes and it would probably work better, but I would wear the outfits in real life."
 
 3. *Was the input needed from you clear (e.g. could you understand the scaling of the item requested of you)?*
 
-    ```blah.```
+    "Yes."
 
 4. *Rate the usefulness of the program for daily life on a scale of 1 to 5?*
 
-    ```blah.```
+    "I woudl rate it a 3.5."
 
 5. *Do you have suggestions to improve the program?*
 
-    ```blah.```
+    "Not that I can think of."
 
 6. *Any other comments, questions, or critiques? (Put N/A if no comment)*
 
-    ```blah.```
+   "I think it's a great app. I think it will help when you have more visuals and it's in an app form, not just a database."
 
 
 
