@@ -88,10 +88,10 @@ int main() {
         } else if (choice == 4) { // SAVE AN OUTFIT
             vector<Clothing*> outfitItems;
             string user_input;
+            cout << "Enter the items you want to add. Please type 'DONE' when finished:" << endl;
             while (true) {
-                cout << "Enter the items you want to add. Please type 'Done' when finished: \n> ";
                 cout << "What item do you want to add to this outfit? : \n> "; getline(cin, user_input);
-                if (user_input == "Done") { 
+                if (user_input == "DONE") { 
                     break;
                 } else if (check_valid(user_input, user_closet.closetItems)) {
                     outfitItems.push_back(get_Item(user_input, user_closet.closetItems));
