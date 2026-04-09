@@ -1,3 +1,0 @@
-testUsername
-testPassword
-23173
