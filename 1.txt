@@ -1,7 +1,0 @@
-1
-2
-23173
-Top,top1,Top,white,0,5,0,1,5,2
-Bottom,bottoms1,Bottom,white,0,5,0,1,5,0,0
-Shoes,shoes1,Shoes,white,0,5,0,1,5,0,0,0
-Top,top2,Top,pink,1,5,0,0,5,2
