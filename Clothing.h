@@ -22,6 +22,12 @@ class Clothing{
         bool getRaining();
         int getDressiness();
         virtual string itemDescription() = 0;
+
+        // serialize() is a virtual method declared in each subclass 
+        // that defines how a specific item appears in the txt file
+        // i.e. it is serialized so each item has the same format
+        // serialize() helps the generateOutfit() method check item
+        // attributes correctly
         virtual string serialize() = 0;
 
     private:

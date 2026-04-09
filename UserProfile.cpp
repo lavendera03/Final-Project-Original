@@ -46,7 +46,7 @@ string UserProfile::getUsername() {
     return username;
 }
 
-// Saves username, password, zipCode to a flat file
+// saves username, password, zipCode to a txt file
 void UserProfile::saveToFile() {
     ofstream file(username + ".txt");
     if (!file.is_open()) {

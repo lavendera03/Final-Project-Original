@@ -20,7 +20,7 @@ bool AuthSystem::handleSignup(UserProfile& profile) {
     cout << "Choose a username: ";
     getline(cin, username);
 
-    // Check if username already exists
+    // check if username already exists
     ifstream check(username + ".txt");
     if (check.is_open()) {
         cout << "Username already taken. Please log in instead.\n";
@@ -32,7 +32,7 @@ bool AuthSystem::handleSignup(UserProfile& profile) {
     cout << "Enter your zip code: ";
     getline(cin, zip);
 
-    // Write the new profile file directly so login() can load it
+    // write the new profile file directly so login() can load it
     ofstream file(username + ".txt");
     file << username << "\n" << password << "\n" << zip << "\n";
     file.close();
