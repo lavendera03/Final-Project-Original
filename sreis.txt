@@ -16,3 +16,4 @@ Dress,striped dress,Dress,blue+white,1,4,0,0,4,short
 Dress,anthro dress,Dress,rainbow,1,5,0,0,5,short
 Bottom,pink lulu shorts,Bottom,pink,0,2,0,0,2,1,0
 Shoes,white leather sneakers,Shoes,white,0,3,0,1,3,0,0,0
+Top,lulu longlseeve,Top,navy,0,1,1,1,2,1
