@@ -89,7 +89,8 @@ int main() {
             vector<Clothing*> outfitItems;
             string user_input;
             while (true) {
-                cout << "What item do you want to add to this outfit?: \n> "; getline(cin, user_input);
+                cout << "Enter the items you want to add. Please type 'Done' when finished: \n> ";
+                cout << "What item do you want to add to this outfit? : \n> "; getline(cin, user_input);
                 if (user_input == "Done") { 
                     break;
                 } else if (check_valid(user_input, user_closet.closetItems)) {
