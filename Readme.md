@@ -1,5 +1,5 @@
 ## End User feedback 4/9
-# CMSC 240 Lab 3 Computron User Feedback
+# CMSC 240 Final Project - Forecast Fits
 Author: 
 
 Program Description:
