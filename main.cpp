@@ -85,7 +85,16 @@ int main() {
                     cout << "   -" << item->getName() << endl;
                 }
             }
-        } else if (choice == 4) { // SAVE AN OUTFIT
+
+            cout << "Do you want to save this outfit to your closet?" << endl;
+            cout << "1. yes" << endl;
+            cout << "2. no" << endl;
+            int save;
+            cin >> save;
+            if(save ==1){
+                user_closet.saveOutfit(outfit);
+            }
+        } else if (choice == 800) { // SAVE AN OUTFIT
             vector<Clothing*> outfitItems;
             string user_input;
             cout << "Enter the items you want to add. Please type 'DONE' when finished:" << endl;
@@ -101,9 +110,9 @@ int main() {
                 }
             }
             user_closet.saveOutfit(outfitItems);
-        } else if (choice == 5) { // SHOW SAVED OUTFITS
+        } else if (choice == 4) { // SHOW SAVED OUTFITS
             user_closet.showOutfits();
-        } else if (choice == 6) { // SHOW ITEMS IN CLOSET
+        } else if (choice == 5) { // SHOW ITEMS IN CLOSET
             user_closet.showCloset();
         } else if (choice > 6) { 
             cout << "Invalid Input. Please enter one of the indices listed below." << endl;
@@ -117,9 +126,9 @@ int main_menu() { // Main Menu Options
     cout << "1. Add Item" << endl;
     cout << "2. Remove Item" << endl;
     cout << "3. Generate Outfit" << endl;
-    cout << "4. Save An Outfit" << endl;
-    cout << "5. Show Saved Outfits" << endl;
-    cout << "6. Show Items in Closet" << endl;
+    //cout << "4. Save An Outfit" << endl;
+    cout << "4. Show Saved Outfits" << endl;
+    cout << "5. Show Items in Closet" << endl;
     cout << "0. Exit" << endl;
     cout << "==============================" << endl;
     cout << "Please choose an option: \n> ";
