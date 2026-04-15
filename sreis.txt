@@ -17,3 +17,10 @@ Dress,anthro dress,Dress,rainbow,1,5,0,0,5,short
 Bottom,pink lulu shorts,Bottom,pink,0,2,0,0,2,1,0
 Shoes,white leather sneakers,Shoes,white,0,3,0,1,3,0,0,0
 Top,lulu longlseeve,Top,navy,0,1,1,1,2,1
+Bottom,light blue lulu shorts,Bottom,light blue,0,5,1,0,1,1,0
+Bottom,pink lulu shorts,Bottom,pink,0,5,0,0,1,1,0
+OUTFITS
+striped dress,white leather sneakers,
+lulu tank,light blue lulu shorts,hokas,
+anthro dress,white leather sneakers,
+checked tank,anthro jeans,white leather sneakers,

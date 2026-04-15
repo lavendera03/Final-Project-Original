@@ -91,6 +91,7 @@ int main() {
                 cin >> save;
                 if(save ==1){
                     user_closet.saveOutfit(outfit);
+                    profile.saveToFile();
                 }
             }
 
