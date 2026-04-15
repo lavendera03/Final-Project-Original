@@ -84,16 +84,17 @@ int main() {
                 for (Clothing* item : outfit) {
                     cout << "   -" << item->getName() << endl;
                 }
+                cout << "Do you want to save this outfit to your closet?" << endl;
+                cout << "1. yes" << endl;
+                cout << "2. no" << endl;
+                int save;
+                cin >> save;
+                if(save ==1){
+                    user_closet.saveOutfit(outfit);
+                }
             }
 
-            cout << "Do you want to save this outfit to your closet?" << endl;
-            cout << "1. yes" << endl;
-            cout << "2. no" << endl;
-            int save;
-            cin >> save;
-            if(save ==1){
-                user_closet.saveOutfit(outfit);
-            }
+    
         } else if (choice == 800) { // SAVE AN OUTFIT
             vector<Clothing*> outfitItems;
             string user_input;
