@@ -72,7 +72,7 @@ void Closet<T>::showOutfits() {
         for (int outfit = 0; outfit < savedOutfits.size(); outfit++) {
             cout << "Outfit " << outfit << endl;
             for (int item = 0; item < savedOutfits[outfit].size(); item++) {
-                cout << "+ " << savedOutfits[outfit][item]->getName() << ": " << savedOutfits[outfit][item]->itemDescription() << endl;
+                cout << "+ " << savedOutfits[outfit][item]->getName() << endl;
             }       
         }
     } cout << "---------------------" << endl;
