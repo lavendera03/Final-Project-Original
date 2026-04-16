@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ForecastFits</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0f0e0c;
+    --surface: #1a1916;
+    --surface2: #242220;
+    --border: #2e2c29;
+    --accent: #e8c98a;
+    --accent2: #c4a35a;
+    --text: #f0ece4;
+    --text2: #9c9488;
+    --text3: #6b6660;
+    --danger: #c4614a;
+    --success: #6a9e74;
+    --radius: 6px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .app { width: 100%; max-width: 700px; padding: 20px 16px 60px; }
+
+  /* ---- HEADER ---- */
+  header {
+    text-align: center;
+    padding: 48px 0 36px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 32px;
+  }
+  header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    color: var(--accent);
+  }
+  header p {
+    color: var(--text2);
+    margin-top: 6px;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+  .user-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin-bottom: 24px;
+    font-size: 11px;
+    color: var(--text2);
+  }
+  .user-bar span { color: var(--accent); font-weight: 500; }
+
+  /* ---- SCREENS ---- */
+  .screen { display: none; }
+  .screen.active { display: block; }
+
+  /* ---- CARDS ---- */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin-bottom: 16px;
+  }
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: var(--accent);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* ---- FORM ELEMENTS ---- */
+  .form-group { margin-bottom: 14px; }
+  label {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text2);
+    margin-bottom: 6px;
+  }
+  input, select {
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    padding: 10px 12px;
+    border-radius: var(--radius);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  input:focus, select:focus { border-color: var(--accent2); }
+  select option { background: var(--surface); }
+
+  /* ---- BUTTONS ---- */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: var(--radius);
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-primary { background: var(--accent); color: var(--bg); font-weight: 500; }
+  .btn-primary:hover { background: var(--accent2); }
+  .btn-secondary { background: var(--surface2); color: var(--text); border: 1px solid var(--border); }
+  .btn-secondary:hover { border-color: var(--accent2); color: var(--accent); }
+  .btn-danger { background: transparent; color: var(--danger); border: 1px solid var(--danger); }
+  .btn-danger:hover { background: var(--danger); color: var(--text); }
+  .btn-success { background: var(--success); color: var(--text); }
+  .btn-full { width: 100%; justify-content: center; }
+  .btn-sm { padding: 6px 12px; font-size: 11px; }
+
+  /* ---- NAV MENU ---- */
+  .nav-menu {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .nav-btn {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text2);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 16px 12px;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .nav-btn:hover { border-color: var(--accent2); color: var(--accent); }
+  .nav-btn .icon { font-size: 20px; }
+  .nav-btn.logout { grid-column: 1 / -1; color: var(--text3); }
+  .nav-btn.logout:hover { border-color: var(--danger); color: var(--danger); }
+
+  /* ---- CLOTHING LIST ---- */
+  .clothing-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin-bottom: 8px;
+    background: var(--bg);
+    transition: border-color 0.2s;
+  }
+  .clothing-item:hover { border-color: var(--border); }
+  .clothing-item-info { flex: 1; }
+  .clothing-item-name { color: var(--text); font-weight: 500; margin-bottom: 3px; }
+  .clothing-item-desc { color: var(--text3); font-size: 11px; }
+  .tag {
+    display: inline-block;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--text2);
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    margin-right: 4px;
+    letter-spacing: 0.5px;
+  }
+
+  /* ---- OUTFIT DISPLAY ---- */
+  .outfit-result {
+    background: var(--surface2);
+    border: 1px solid var(--accent2);
+    border-radius: var(--radius);
+    padding: 20px;
+    margin: 16px 0;
+  }
+  .outfit-result h3 {
+    font-family: 'Playfair Display', serif;
+    color: var(--accent);
+    margin-bottom: 14px;
+    font-size: 16px;
+  }
+  .outfit-item-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .outfit-item-row:last-child { border-bottom: none; }
+  .outfit-item-row .bullet { color: var(--accent2); }
+
+  /* ---- EMPTY STATE ---- */
+  .empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text3);
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+
+  /* ---- ALERT ---- */
+  .alert {
+    padding: 12px 16px;
+    border-radius: var(--radius);
+    margin-bottom: 16px;
+    font-size: 12px;
+  }
+  .alert-error { background: rgba(196,97,74,0.15); border: 1px solid var(--danger); color: #e88a76; }
+  .alert-success { background: rgba(106,158,116,0.15); border: 1px solid var(--success); color: #8ec99a; }
+
+  /* ---- DIVIDER ---- */
+  .divider { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+
+  /* ---- OUTFIT SAVED ---- */
+  .saved-outfit-card {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px;
+    margin-bottom: 10px;
+    background: var(--bg);
+  }
+  .saved-outfit-card h4 {
+    color: var(--text2);
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  /* ---- RADIO TOGGLE ---- */
+  .toggle-group { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+  .toggle-option { display: none; }
+  .toggle-label {
+    padding: 8px 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    cursor: pointer;
+    color: var(--text2);
+    font-size: 11px;
+    transition: all 0.2s;
+    letter-spacing: 0.5px;
+  }
+  .toggle-option:checked + .toggle-label {
+    background: var(--accent);
+    color: var(--bg);
+    border-color: var(--accent);
+    font-weight: 500;
+  }
+
+  /* RANGE */
+  input[type=range] {
+    padding: 0;
+    height: 4px;
+    accent-color: var(--accent);
+  }
+  .range-labels { display: flex; justify-content: space-between; color: var(--text3); font-size: 10px; margin-top: 4px; }
+
+  .flex-row { display: flex; gap: 10px; align-items: flex-end; }
+  .flex-row .form-group { flex: 1; }
+
+  #subscreen { display: none; }
+  #subscreen.active { display: block; }
+
+  .back-btn {
+    background: none;
+    border: none;
+    color: var(--text2);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 0 0 20px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .back-btn:hover { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <h1>ForecastFits</h1>
+    <p>Dress for the weather. Dress for the moment.</p>
+  </header>
+
+  <!-- ========== LOGIN SCREEN ========== -->
+  <div class="screen active" id="screen-auth">
+    <div class="card">
+      <div class="card-title">Welcome Back</div>
+      <div id="auth-alert"></div>
+      <div class="form-group">
+        <label>Username</label>
+        <input type="text" id="auth-username" placeholder="your username" autocomplete="off">
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" id="auth-password" placeholder="your password">
+      </div>
+      <div id="auth-zip-group" class="form-group" style="display:none">
+        <label>Zip Code</label>
+        <input type="text" id="auth-zip" placeholder="e.g. 23220" maxlength="10">
+      </div>
+      <div style="display:flex; gap:10px; margin-top:4px">
+        <button class="btn btn-primary" style="flex:1" onclick="handleLogin()">Login</button>
+        <button class="btn btn-secondary" style="flex:1" onclick="toggleSignup()">Sign Up</button>
+      </div>
+      <div id="signup-submit" style="display:none; margin-top:10px">
+        <button class="btn btn-success btn-full" onclick="handleSignup()">Create Account</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== MAIN MENU ========== -->
+  <div class="screen" id="screen-main">
+    <div class="user-bar" id="user-bar">Logged in as <span id="display-username">—</span></div>
+    <div class="nav-menu">
+      <button class="nav-btn" onclick="showSub('closet-view')"><span class="icon">👗</span>View Closet</button>
+      <button class="nav-btn" onclick="showSub('add-item')"><span class="icon">➕</span>Add Item</button>
+      <button class="nav-btn" onclick="showSub('remove-item')"><span class="icon">✂️</span>Remove Item</button>
+      <button class="nav-btn" onclick="showSub('gen-outfit')"><span class="icon">✨</span>Generate Outfit</button>
+      <button class="nav-btn" onclick="showSub('saved-outfits')"><span class="icon">📂</span>Saved Outfits</button>
+      <button class="nav-btn logout" onclick="handleLogout()"><span class="icon">🚪</span>Log Out</button>
+    </div>
+    <div id="subscreen">
+
+      <!-- VIEW CLOSET -->
+      <div id="sub-closet-view">
+        <button class="back-btn" onclick="hideSub()">← Back</button>
+        <div class="card">
+          <div class="card-title">👗 Your Closet</div>
+          <div id="closet-list"></div>
+        </div>
+      </div>
+
+      <!-- ADD ITEM -->
+      <div id="sub-add-item">
+        <button class="back-btn" onclick="hideSub()">← Back</button>
+        <div class="card">
+          <div class="card-title">➕ Add Clothing Item</div>
+          <div id="add-alert"></div>
+          <div class="form-group">
+            <label>Item Name</label>
+            <input type="text" id="add-name" placeholder="e.g. White Button-Down">
+          </div>
+          <div class="form-group">
+            <label>Category</label>
+            <select id="add-type" onchange="updateTypeFields()">
+              <option value="">-- select --</option>
+              <option value="Top">Top</option>
+              <option value="Bottom">Bottom</option>
+              <option value="Dress">Dress</option>
+              <option value="Coat">Coat</option>
+              <option value="Shoes">Shoes</option>
+              <option value="Accessory">Accessory</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Color</label>
+            <input type="text" id="add-color" placeholder="e.g. navy blue">
+          </div>
+          <div class="flex-row">
+            <div class="form-group">
+              <label>Patterned?</label>
+              <select id="add-pattern">
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Rain-OK?</label>
+              <select id="add-rain">
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Basic?</label>
+              <select id="add-basic">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Warmth Level — <span id="warmth-val">3</span>/5 <span style="color:var(--text3);font-size:10px">(0=very warm · 5=not warm)</span></label>
+            <input type="range" id="add-warmth" min="0" max="5" value="3" oninput="document.getElementById('warmth-val').textContent=this.value">
+          </div>
+          <div class="form-group">
+            <label>Dressiness — <span id="dress-val">3</span>/5 <span style="color:var(--text3);font-size:10px">(1=casual · 5=formal)</span></label>
+            <input type="range" id="add-dressiness" min="1" max="5" value="3" oninput="document.getElementById('dress-val').textContent=this.value">
+          </div>
+
+          <!-- type-specific fields -->
+          <div id="type-fields"></div>
+
+          <hr class="divider">
+          <button class="btn btn-primary btn-full" onclick="addClothingItem()">Add to Closet</button>
+        </div>
+      </div>
+
+      <!-- REMOVE ITEM -->
+      <div id="sub-remove-item">
+        <button class="back-btn" onclick="hideSub()">← Back</button>
+        <div class="card">
+          <div class="card-title">✂️ Remove Item</div>
+          <div id="remove-alert"></div>
+          <div id="remove-list"></div>
+        </div>
+      </div>
+
+      <!-- GENERATE OUTFIT -->
+      <div id="sub-gen-outfit">
+        <button class="back-btn" onclick="hideSub()">← Back</button>
+        <div class="card">
+          <div class="card-title">✨ Generate Outfit</div>
+          <div id="gen-alert"></div>
+          <div class="flex-row">
+            <div class="form-group">
+              <label>Dressiness (1–5)</label>
+              <input type="number" id="gen-dress" min="1" max="5" value="3">
+            </div>
+            <div class="form-group">
+              <label>Avg Temp (°F)</label>
+              <input type="number" id="gen-temp" value="65">
+            </div>
+          </div>
+          <button class="btn btn-primary btn-full" onclick="generateOutfit()">Generate →</button>
+          <div id="outfit-result" style="display:none">
+            <div class="outfit-result" id="outfit-display"></div>
+            <div style="display:flex;gap:10px">
+              <button class="btn btn-success" style="flex:1" onclick="saveGeneratedOutfit()">💾 Save Outfit</button>
+              <button class="btn btn-secondary" style="flex:1" onclick="generateOutfit()">↻ Try Again</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SAVED OUTFITS -->
+      <div id="sub-saved-outfits">
+        <button class="back-btn" onclick="hideSub()">← Back</button>
+        <div class="card">
+          <div class="card-title">📂 Saved Outfits</div>
+          <div id="saved-outfits-list"></div>
+        </div>
+      </div>
+
+    </div><!-- /subscreen -->
+  </div><!-- /screen-main -->
+</div>
+
+<script>
+// ============================================================
+// DATA MODEL — mirrors C++ classes in plain JS objects
+// ============================================================
+
+// All user data lives here in memory; localStorage used for persistence
+let currentUser = null;
+let lastGeneratedOutfit = null;
+
+// ---- Clothing factory (mirrors C++ subclasses) ----
+function makeClothing(base, extras) {
+  return { ...base, ...extras };
+}
+
+function itemDescription(item) {
+  const t = item.classType;
+  const pat = item.pattern ? 'patterned' : 'solid';
+  let d = '';
+  if (t === 'Top') d = `${item.color} ${pat} top, warmth ${item.warmth}, sleeve: ${sleeveLabel(item.sleeve_length)}`;
+  else if (t === 'Bottom') d = `${item.color} ${pat} ${item.shorts?'shorts':item.skirt?'skirt':'pants'}, warmth ${item.warmth}`;
+  else if (t === 'Dress') d = `${item.color} ${pat} ${item.length} dress, warmth ${item.warmth}`;
+  else if (t === 'Coat') d = `${item.color} ${pat} ${item.length} coat${item.waterproof?', waterproof':''}, warmth ${item.warmth}`;
+  else if (t === 'Shoes') d = `${item.color} ${[item.heel?'heels':'',item.openToe?'open toe':'',item.sneaker?'sneakers':''].filter(Boolean).join(', ')||'shoes'}`;
+  else if (t === 'Accessory') d = `${item.color} ${item.typeAC}`;
+  return d;
+}
+
+function sleeveLabel(v) {
+  return v === '1' ? 'long' : v === '2' ? 'short' : 'sleeveless';
+}
+
+// ---- Serialize item to string for storage ----
+function serializeItem(item) {
+  const t = item.classType;
+  const base = [t, item.name, item.type, item.color,
+    +item.pattern, item.warmth, +item.raining, +item.basic, item.dressiness];
+  if (t === 'Top') return [...base, item.sleeve_length].join(',');
+  if (t === 'Bottom') return [...base, +item.shorts, +item.skirt].join(',');
+  if (t === 'Dress') return [...base, item.length].join(',');
+  if (t === 'Coat') return [...base, item.length, +item.waterproof].join(',');
+  if (t === 'Shoes') return [...base, +item.openToe, +item.heel, +item.sneaker].join(',');
+  if (t === 'Accessory') return [...base, item.typeAC].join(',');
+}
+
+function deserializeItem(line) {
+  const a = line.split(',');
+  if (a.length < 9) return null;
+  const base = {
+    classType: a[0], name: a[1], type: a[2], color: a[3],
+    pattern: !!+a[4], warmth: +a[5], raining: !!+a[6], basic: !!+a[7], dressiness: +a[8]
+  };
+  if (a[0]==='Top') return {...base, sleeve_length: a[9]||'2'};
+  if (a[0]==='Bottom') return {...base, shorts:!!+a[9], skirt:!!+a[10]};
+  if (a[0]==='Dress') return {...base, length: a[9]||'midi'};
+  if (a[0]==='Coat') return {...base, length:a[9]||'mid', waterproof:!!+a[10]};
+  if (a[0]==='Shoes') return {...base, openToe:!!+a[9], heel:!!+a[10], sneaker:!!+a[11]};
+  if (a[0]==='Accessories'||a[0]==='Accessory') return {...base, classType:'Accessory', typeAC:a[9]||''};
+  return null;
+}
+
+// ============================================================
+// STORAGE — localStorage mimics .txt file per user
+// ============================================================
+function loadProfile(username) {
+  const raw = localStorage.getItem('ff_user_' + username);
+  if (!raw) return null;
+  const lines = raw.split('\n');
+  const profile = {
+    username: lines[0],
+    password: lines[1],
+    zipCode: lines[2],
+    closetItems: [],
+    savedOutfits: []
+  };
+  let readingOutfits = false;
+  for (let i = 3; i < lines.length; i++) {
+    const line = lines[i].trim();
+    if (!line) continue;
+    if (line === 'OUTFITS') { readingOutfits = true; continue; }
+    if (!readingOutfits) {
+      const item = deserializeItem(line);
+      if (item) profile.closetItems.push(item);
+    } else {
+      const names = line.split(',').filter(Boolean);
+      const outfit = names.map(n => profile.closetItems.find(x => x.name === n)).filter(Boolean);
+      if (outfit.length) profile.savedOutfits.push(outfit);
+    }
+  }
+  return profile;
+}
+
+function saveProfile(profile) {
+  let data = [profile.username, profile.password, profile.zipCode].join('\n') + '\n';
+  for (const item of profile.closetItems) data += serializeItem(item) + '\n';
+  data += 'OUTFITS\n';
+  for (const outfit of profile.savedOutfits) {
+    data += outfit.map(i => i.name).join(',') + '\n';
+  }
+  localStorage.setItem('ff_user_' + profile.username, data);
+}
+
+function userExists(username) {
+  return localStorage.getItem('ff_user_' + username) !== null;
+}
+
+function createUser(username, password, zip) {
+  const data = [username, password, zip].join('\n') + '\nOUTFITS\n';
+  localStorage.setItem('ff_user_' + username, data);
+}
+
+// ============================================================
+// AUTH
+// ============================================================
+let signupMode = false;
+
+function toggleSignup() {
+  signupMode = !signupMode;
+  document.getElementById('auth-zip-group').style.display = signupMode ? 'block' : 'none';
+  document.getElementById('signup-submit').style.display = signupMode ? 'block' : 'none';
+}
+
+function handleLogin() {
+  const u = document.getElementById('auth-username').value.trim();
+  const p = document.getElementById('auth-password').value;
+  const alert = document.getElementById('auth-alert');
+  if (!u || !p) { showAlert(alert, 'error', 'Please enter username and password.'); return; }
+  const profile = loadProfile(u);
+  if (!profile) { showAlert(alert, 'error', 'No account found with that username.'); return; }
+  if (profile.password !== p) { showAlert(alert, 'error', 'Incorrect password.'); return; }
+  currentUser = profile;
+  enterApp();
+}
+
+function handleSignup() {
+  const u = document.getElementById('auth-username').value.trim();
+  const p = document.getElementById('auth-password').value;
+  const z = document.getElementById('auth-zip').value.trim();
+  const alert = document.getElementById('auth-alert');
+  if (!u || !p || !z) { showAlert(alert, 'error', 'All fields required for sign up.'); return; }
+  if (userExists(u)) { showAlert(alert, 'error', 'Username already taken.'); return; }
+  createUser(u, p, z);
+  currentUser = loadProfile(u);
+  enterApp();
+}
+
+function handleLogout() {
+  saveProfile(currentUser);
+  currentUser = null;
+  hideSub();
+  switchScreen('screen-auth');
+  document.getElementById('auth-username').value = '';
+  document.getElementById('auth-password').value = '';
+  document.getElementById('auth-alert').innerHTML = '';
+}
+
+function enterApp() {
+  document.getElementById('display-username').textContent = currentUser.username;
+  switchScreen('screen-main');
+  hideSub();
+}
+
+// ============================================================
+// NAVIGATION
+// ============================================================
+function switchScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+function showSub(name) {
+  const ss = document.getElementById('subscreen');
+  ss.style.display = 'block';
+  ss.classList.add('active');
+  document.querySelectorAll('[id^="sub-"]').forEach(el => el.style.display = 'none');
+  document.getElementById('sub-' + name).style.display = 'block';
+
+  // Populate as needed
+  if (name === 'closet-view') renderCloset();
+  if (name === 'remove-item') renderRemoveList();
+  if (name === 'saved-outfits') renderSavedOutfits();
+  if (name === 'add-item') {
+    document.getElementById('add-name').value = '';
+    document.getElementById('add-type').value = '';
+    document.getElementById('add-color').value = '';
+    document.getElementById('type-fields').innerHTML = '';
+    document.getElementById('add-alert').innerHTML = '';
+  }
+}
+
+function hideSub() {
+  document.getElementById('subscreen').style.display = 'none';
+  document.getElementById('subscreen').classList.remove('active');
+}
+
+// ============================================================
+// CLOSET VIEW
+// ============================================================
+function renderCloset() {
+  const el = document.getElementById('closet-list');
+  const items = currentUser.closetItems;
+  if (!items.length) {
+    el.innerHTML = '<div class="empty-state">Your closet is empty.<br>Add some items to get started.</div>';
+    return;
+  }
+  el.innerHTML = items.map(item => `
+    <div class="clothing-item">
+      <div class="clothing-item-info">
+        <div class="clothing-item-name">${esc(item.name)}</div>
+        <div class="clothing-item-desc">${esc(itemDescription(item))}</div>
+        <div style="margin-top:6px">
+          <span class="tag">${item.classType}</span>
+          <span class="tag">Dressy: ${item.dressiness}</span>
+          <span class="tag">Warmth: ${item.warmth}</span>
+          ${item.basic ? '<span class="tag">basic</span>' : ''}
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ============================================================
+// ADD ITEM
+// ============================================================
+function updateTypeFields() {
+  const type = document.getElementById('add-type').value;
+  const el = document.getElementById('type-fields');
+  if (type === 'Top') {
+    el.innerHTML = `
+      <div class="form-group"><label>Sleeve Length</label>
+      <select id="tf-sleeve"><option value="1">Long Sleeve</option><option value="2" selected>Short Sleeve</option><option value="3">Sleeveless</option></select></div>`;
+  } else if (type === 'Bottom') {
+    el.innerHTML = `
+      <div class="flex-row">
+        <div class="form-group"><label>Shorts?</label><select id="tf-shorts"><option value="0">No</option><option value="1">Yes</option></select></div>
+        <div class="form-group"><label>Skirt?</label><select id="tf-skirt"><option value="0">No</option><option value="1">Yes</option></select></div>
+      </div>`;
+  } else if (type === 'Dress') {
+    el.innerHTML = `<div class="form-group"><label>Length</label><input type="text" id="tf-length" placeholder="e.g. midi, mini, maxi"></div>`;
+  } else if (type === 'Coat') {
+    el.innerHTML = `
+      <div class="flex-row">
+        <div class="form-group"><label>Coat Length</label><input type="text" id="tf-coat-length" placeholder="e.g. long, cropped"></div>
+        <div class="form-group"><label>Waterproof?</label><select id="tf-waterproof"><option value="0">No</option><option value="1">Yes</option></select></div>
+      </div>`;
+  } else if (type === 'Shoes') {
+    el.innerHTML = `
+      <div class="flex-row">
+        <div class="form-group"><label>Open Toe?</label><select id="tf-opentoe"><option value="0">No</option><option value="1">Yes</option></select></div>
+        <div class="form-group"><label>Heel?</label><select id="tf-heel"><option value="0">No</option><option value="1">Yes</option></select></div>
+        <div class="form-group"><label>Sneakers?</label><select id="tf-sneaker"><option value="0">No</option><option value="1">Yes</option></select></div>
+      </div>`;
+  } else if (type === 'Accessory') {
+    el.innerHTML = `<div class="form-group"><label>Accessory Type</label><input type="text" id="tf-acc-type" placeholder="e.g. scarf, belt, hat"></div>`;
+  } else {
+    el.innerHTML = '';
+  }
+}
+
+function addClothingItem() {
+  const alert = document.getElementById('add-alert');
+  const name = document.getElementById('add-name').value.trim();
+  const type = document.getElementById('add-type').value;
+  const color = document.getElementById('add-color').value.trim();
+  const pattern = !!+document.getElementById('add-pattern').value;
+  const rain = !!+document.getElementById('add-rain').value;
+  const basic = !!+document.getElementById('add-basic').value;
+  const warmth = +document.getElementById('add-warmth').value;
+  const dressiness = +document.getElementById('add-dressiness').value;
+
+  if (!name || !type || !color) { showAlert(alert, 'error', 'Name, category and color are required.'); return; }
+  if (currentUser.closetItems.find(i => i.name === name)) { showAlert(alert, 'error', 'An item with that name already exists.'); return; }
+
+  let item = { classType: type, name, type, color, pattern, warmth, raining: rain, basic, dressiness };
+
+  if (type === 'Top') {
+    const sl = document.getElementById('tf-sleeve');
+    if (!sl) { showAlert(alert, 'error', 'Select sleeve length.'); return; }
+    item.sleeve_length = sl.value;
+  } else if (type === 'Bottom') {
+    item.shorts = !!+(document.getElementById('tf-shorts')?.value||0);
+    item.skirt  = !!+(document.getElementById('tf-skirt')?.value||0);
+  } else if (type === 'Dress') {
+    item.length = document.getElementById('tf-length')?.value.trim() || 'midi';
+  } else if (type === 'Coat') {
+    item.length = document.getElementById('tf-coat-length')?.value.trim() || 'mid';
+    item.waterproof = !!+(document.getElementById('tf-waterproof')?.value||0);
+  } else if (type === 'Shoes') {
+    item.openToe = !!+(document.getElementById('tf-opentoe')?.value||0);
+    item.heel    = !!+(document.getElementById('tf-heel')?.value||0);
+    item.sneaker = !!+(document.getElementById('tf-sneaker')?.value||0);
+  } else if (type === 'Accessory') {
+    item.typeAC = document.getElementById('tf-acc-type')?.value.trim() || '';
+  }
+
+  currentUser.closetItems.push(item);
+  saveProfile(currentUser);
+  showAlert(alert, 'success', `"${name}" added to your closet!`);
+  document.getElementById('add-name').value = '';
+  document.getElementById('add-color').value = '';
+  document.getElementById('add-type').value = '';
+  document.getElementById('type-fields').innerHTML = '';
+}
+
+// ============================================================
+// REMOVE ITEM
+// ============================================================
+function renderRemoveList() {
+  const el = document.getElementById('remove-list');
+  const items = currentUser.closetItems;
+  if (!items.length) {
+    el.innerHTML = '<div class="empty-state">Closet is empty.</div>';
+    return;
+  }
+  el.innerHTML = items.map(item => `
+    <div class="clothing-item">
+      <div class="clothing-item-info">
+        <div class="clothing-item-name">${esc(item.name)}</div>
+        <div class="clothing-item-desc">${esc(itemDescription(item))}</div>
+      </div>
+      <button class="btn btn-danger btn-sm" onclick="removeItem('${esc(item.name)}')">Remove</button>
+    </div>
+  `).join('');
+}
+
+function removeItem(name) {
+  const alert = document.getElementById('remove-alert');
+  const idx = currentUser.closetItems.findIndex(i => i.name === name);
+  if (idx === -1) { showAlert(alert, 'error', 'Item not found.'); return; }
+  currentUser.closetItems.splice(idx, 1);
+  saveProfile(currentUser);
+  showAlert(alert, 'success', `"${name}" removed.`);
+  renderRemoveList();
+}
+
+// ============================================================
+// GENERATE OUTFIT — mirrors C++ generateOutfit()
+// ============================================================
+function generateOutfit() {
+  const alert = document.getElementById('gen-alert');
+  const dressinessInput = +document.getElementById('gen-dress').value;
+  const avgTemp = +document.getElementById('gen-temp').value;
+
+  const minD = dressinessInput - 1;
+  const maxD = dressinessInput + 1;
+
+  const all = currentUser.closetItems;
+
+  function filter(type) {
+    return all.filter(i => i.classType === type)
+      .filter(i => i.dressiness >= minD && i.dressiness <= maxD);
+  }
+
+  function filterWarmth(arr, neutralWarmth=3) {
+    return arr.filter(i => {
+      if (i.warmth === neutralWarmth) return true;
+      const w = i.warmth * 15;
+      return w >= avgTemp - 10 && w <= avgTemp + 10;
+    });
+  }
+
+  let tops    = filterWarmth(filter('Top'), 99);      // tops always filtered
+  let bottoms = filterWarmth(filter('Bottom'));
+  let shoes   = filterWarmth(filter('Shoes'));
+  let coats   = filterWarmth(filter('Coat'));
+  let dresses = filterWarmth(filter('Dress'), 99);
+
+  // re-apply warmth to tops
+  tops = tops.filter(i => {
+    const w = i.warmth * 15;
+    return w >= avgTemp - 10 && w <= avgTemp + 10;
+  });
+  dresses = dresses.filter(i => {
+    const w = i.warmth * 15;
+    return w >= avgTemp - 10 && w <= avgTemp + 10;
+  });
+
+  const canTop   = tops.length > 0 && bottoms.length > 0 && shoes.length > 0;
+  const canDress = dresses.length > 0 && shoes.length > 0;
+
+  if (!canTop && !canDress) {
+    showAlert(alert, 'error', 'Not enough matching items in your closet. Try adjusting dressiness or temperature, or add more items.');
+    document.getElementById('outfit-result').style.display = 'none';
+    return;
+  }
+
+  alert.innerHTML = '';
+  const outfit = [];
+  const useDress = canDress && (!canTop || Math.random() < 0.5);
+
+  if (useDress) {
+    outfit.push(pick(dresses));
+    outfit.push(pick(shoes));
+  } else {
+    outfit.push(pick(tops));
+    outfit.push(pick(bottoms));
+    outfit.push(pick(shoes));
+  }
+
+  if (avgTemp < 50 && coats.length) {
+    outfit.push(pick(coats));
+  }
+
+  lastGeneratedOutfit = outfit;
+
+  const display = document.getElementById('outfit-display');
+  display.innerHTML = `<h3>Today's Outfit</h3>` +
+    outfit.map(i => `<div class="outfit-item-row"><span class="bullet">▸</span><div>
+      <div style="color:var(--text)">${esc(i.name)}</div>
+      <div style="color:var(--text3);font-size:11px">${esc(itemDescription(i))}</div>
+    </div></div>`).join('');
+
+  document.getElementById('outfit-result').style.display = 'block';
+}
+
+function saveGeneratedOutfit() {
+  if (!lastGeneratedOutfit || !lastGeneratedOutfit.length) return;
+  currentUser.savedOutfits.push([...lastGeneratedOutfit]);
+  saveProfile(currentUser);
+  const alert = document.getElementById('gen-alert');
+  showAlert(alert, 'success', 'Outfit saved!');
+}
+
+// ============================================================
+// SAVED OUTFITS
+// ============================================================
+function renderSavedOutfits() {
+  const el = document.getElementById('saved-outfits-list');
+  const outfits = currentUser.savedOutfits;
+  if (!outfits.length) {
+    el.innerHTML = '<div class="empty-state">No saved outfits yet.</div>';
+    return;
+  }
+  el.innerHTML = outfits.map((outfit, idx) => `
+    <div class="saved-outfit-card">
+      <h4>Outfit ${idx + 1}</h4>
+      ${outfit.map(i => `
+        <div class="outfit-item-row">
+          <span class="bullet">▸</span>
+          <div>
+            <div style="color:var(--text)">${esc(i.name)}</div>
+            <div style="color:var(--text3);font-size:11px">${esc(itemDescription(i))}</div>
+          </div>
+        </div>`).join('')}
+    </div>
+  `).join('');
+}
+
+// ============================================================
+// UTILITIES
+// ============================================================
+function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
+function esc(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function showAlert(el, type, msg) {
+  el.innerHTML = `<div class="alert alert-${type}">${msg}</div>`;
+  setTimeout(() => { if (el) el.innerHTML = ''; }, 4000);
+}
+</script>
+</body>
+</html>
