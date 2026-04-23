@@ -1,8 +1,8 @@
-## End User feedback 4/9
+## End User Feeback
 # CMSC 240 Final Project - Forecast Fits
-Author: 
+Author(s): Alicia Lavender, Milijana Stojanovic, Sydney Reis 
 
-Program Description:
+Program Description: Our program generates outfits for users based on the clothing in their closet, the weather, and what the type of occasion they are going to that day.
 
 ## Prototype Feedback
 ### User #1: Team Member (Internal)
