@@ -43,6 +43,8 @@
 
 ### Entry #14 - 02/24/2026
 - Fixed warmth level
+- Updated readme with installation instructions
+- Updated change log
 
 
 **NOTES:**

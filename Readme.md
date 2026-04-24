@@ -4,10 +4,19 @@ Author(s): Alicia Lavender, Milijana Stojanovic, Sydney Reis
 Project Purpose & Description: Choosing an outfit every day that is appropriate for the weather and where you are going that day can be time-consuming and irritating. Our program provides a solution to this situation by generating outfits for users based on the clothing in their closet, the weather, and the type of occasion they are going to attend.
 
 ## Installation Instructions for the Emscription Library 
-Installation instructions for any external libraries.
+To use the ForecastFits program you'll need to have access to the Emscription Library. If you don't have it installed type the following commands into your terminal:
+```git clone https://github.com/emscripten-core/emsdk.git```
+```cd emsdk```
+```./emsdk install latest```
+```./emsdk activate latest```
+```source ./emsdk_env.sh```
 
 ## Compiling & Running the Program
-How to compile and run.
+1. Type the following into your terminal
+    ```python3 -m http.server 8081```
+2. When the pop-up window appears select "Open in browser."
+3. Select ForecastFits.html
+4. Start building your closet! 
 
 ## Example Usage
 (Insert Youtube Link of Project Demo Video)
