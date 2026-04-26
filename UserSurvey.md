@@ -234,27 +234,27 @@ Program Description: Our program generates outfits for users based on the clothi
 ### User #2: College Student (External)
 1.  *How easy was it to create a user profile on a scale of 1(Extremely **difficult**) to 5 (Extremely **intuitive**)?*
 
-    ```blah.```
+    ```5.```
 
 2.  *How easy was it to view your closet on a scale of 1(Extremely **difficult**) to 5 (Extremely **intuitive**)?*
 
-    ```blah.```
+    ```5.```
 
 3.  *How easy was it to add/remove clothing on a scale of 1(Extremely **difficult**) to 5 (Extremely **intuitive**)*
 
-    ```blah.```
+    ```5```
 
 4.  *How easy was it to generate an outfit on a scale of 1(Extremely **difficult**) to 5 (Extremely **intuitive**)?*
 
-    ```blah.```
+    ```5.```
 
 5.  *How easy was it to save the outfit in the closet for later on a scale of 1(Extremely **difficult**) to 5 (Extremely **intuitive**)?*
 
-    ```blah.```
+    ```5.```
 
 6.  *How easy was this program to use on a scale of 1(Extremely **difficult**) to 5 (Extremely **intuitive**)?*
 
-    ```blah.```
+    ```4, sometimes had trouble setting the right temperature to generate an appropriate outfit. That said, these girls should be proud of what they've done here. Great work!```
 
 
 ### User #3: Student Athlete (External)
