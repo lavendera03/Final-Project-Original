@@ -286,27 +286,27 @@ Program Description: Our program generates outfits for users based on the clothi
 ### User #4: Computer Science Major (External)
 1.  *How easy was it to create a user profile on a scale of 1(Extremely **difficult**) to 5 (Extremely **intuitive**)?*
 
-    ```blah.```
+    ```It was extremely easy, didn't take all that much effort so i'll give it a 5```
 
 2.  *How easy was it to view your closet on a scale of 1(Extremely **difficult**) to 5 (Extremely **intuitive**)?*
 
-    ```blah.```
+    ```It was just a click of a button so 5.```
 
 3.  *How easy was it to add/remove clothing on a scale of 1(Extremely **difficult**) to 5 (Extremely **intuitive**)*
 
-    ```blah.```
+    ```Displayed what was currently in the closet so you can see what you're able to remove with one button, alsoa 5.```
 
 4.  *How easy was it to generate an outfit on a scale of 1(Extremely **difficult**) to 5 (Extremely **intuitive**)?*
 
-    ```blah.```
+    ```Very clear and the boundaries are stated, a 5 ```
 
 5.  *How easy was it to save the outfit in the closet for later on a scale of 1(Extremely **difficult**) to 5 (Extremely **intuitive**)?*
 
-    ```blah.```
+    ```I would say a 3- I missed the feature to be able to create custom outfits without having to randomly generate one, It didn't come straight to mind I would have to generate one first without having asked```
 
 6.  *How easy was this program to use on a scale of 1(Extremely **difficult**) to 5 (Extremely **intuitive**)?*
 
-    ```blah.```
+    ```Very easy program to use and well catered for the user to follow! 5```
 
 ## Summary of User Feedback 
 ### Feedback for Prototpye
@@ -322,6 +322,7 @@ Top requested improvements:
 
 - Clearer scale labels with examples (e.g. actual temperature ranges)
 - A "back" button during input
+
 
 ### Feedback for Final Version
  - TO BE ADDED ...
