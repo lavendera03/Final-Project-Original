@@ -14,38 +14,47 @@
 - blah
 
 ### Entry #5 - 04/05/2026
-- blah
+- Debugging closet and clothing classes.  
 
 ### Entry #6 - 04/07/2026
-- blah
+- Edited user prompting statements for clarity and brevity
+- Created makefile
+- Encorporated Dress items in the generate outfit algorithm. 
 
 ### Entry #7 - 04/08/2026
-- blah
+- Fixed all infinite loops within the main and submenu 
+- Fixed the makefile to include userProfile info
 
 ### Entry #8 - 04/09/2026
-- blah
+- Added loadfromfile method
+- Updated prompt statements for save outfit feature
+- Created outline for collecting user feedback
+- Collected feedback from users 1, 2, and 3
 
 ### Entry #9 - 04/10/2026
-- blah
+- Collected User 4 Feedback
+- Summarized user feedback and drafted plans for phase 2
 
 ### Entry #10 - 04/13/2026
-- blah
+- Debugging (Fixing saved outfits so it saves correctly)
 
 ### Entry #11 - 04/14/2026
-- blah
+- Debugging (Fixing saved outfits so it saves correctly)
 
 ### Entry #12 - 04/16/2026
-- blah
+- Conversion to WASM (.html file written)
 
 ### Entry #13 - 04/23/2026
 - Created template for user surveys for final project
 - Uploaded change log to repository 
 
-### Entry #14 - 02/24/2026
+### Entry #14 - 04/24/2026
 - Fixed warmth level
 - Updated readme with installation instructions
 - Updated change log
 
+### Entry #15 - 04/25/2026
+- Collected User 4 survey feedback
 
 **NOTES:**
 By 4/6 - The function to view the closet will be completed
