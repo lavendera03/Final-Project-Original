@@ -5,14 +5,27 @@ Project Purpose & Description: Choosing an outfit every day that is appropriate 
 
 ## Installation Instructions for the Emscription Library 
 To use the ForecastFits program you'll need to have access to the Emscription Library. If you don't have it installed type the following commands into your terminal:
+
 ```git clone https://github.com/emscripten-core/emsdk.git```
+
 ```cd emsdk```
+
 ```./emsdk install latest```
+
 ```./emsdk activate latest```
+
 ```source ./emsdk_env.sh```
 
 ## Compiling & Running the Program
-1. Type the following into your terminal
+Compiling and running the text based version of ForecastFits:
+1. Type the following into your terminal:
+```make```
+2. Type the following into your terminal:
+```./ForecastFits```
+3. Start building your closet!
+
+Compiling and running the HTML version of ForecastFits:
+1. Type the following into your terminal:
     ```python3 -m http.server 8081```
 2. When the pop-up window appears select "Open in browser."
 3. Select ForecastFits.html
