@@ -853,7 +853,7 @@ function generateOutfit() {
       } else if (i.warmth === 0) {
         internalWarmth = 5;}
       let w = internalWarmth * 15;
-      return w >= avgTemp - 10 && w <= avgTemp + 10;
+      return w >= avgTemp - 15 && w <= avgTemp + 15;
     });
   }
 
@@ -879,7 +879,7 @@ function generateOutfit() {
       } else if (i.warmth === 0) {
         internalWarmth = 5;}
       let w = internalWarmth * 15;
-    return w >= avgTemp - 10 && w <= avgTemp + 10;
+    return w >= avgTemp - 15 && w <= avgTemp + 15;
   });
   dresses = dresses.filter(i => {
     let internalWarmth = i.warmth;
@@ -896,7 +896,7 @@ function generateOutfit() {
       } else if (i.warmth === 0) {
         internalWarmth = 5;}
       let w = internalWarmth * 15;
-    return w >= avgTemp - 10 && w <= avgTemp + 10;
+    return w >= avgTemp - 15 && w <= avgTemp + 15;
   });
 
   const canTop   = tops.length > 0 && bottoms.length > 0 && shoes.length > 0;
