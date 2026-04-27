@@ -380,19 +380,6 @@ vector<Clothing*> Closet<T>::generateOutfit(int dressiness, int avgTemp) {
     random_device rd;
     mt19937 gen(rd());
 
-    // uniform_int_distribution<int> distt(0, top);
-    // uniform_int_distribution<int> distb(0, bottom);
-    // uniform_int_distribution<int> dists(0, shoe);
-
-    // int topz = distt(gen);
-    // int bottomz = distb(gen);
-    // int shoez = dists(gen);
-
-    // outfit[0] = tops[topz];
-    // outfit[1] = bottoms[bottomz];
-    // outfit[2] = shoes[shoez];
-
-    // return outfit;
 
     bool canTopOutfit = !tops.empty() && !bottoms.empty() && !shoes.empty();
     bool canDressOutfit = !dresses.empty() && !shoes.empty();
@@ -402,9 +389,6 @@ vector<Clothing*> Closet<T>::generateOutfit(int dressiness, int avgTemp) {
         return outfit;
     }
 
-    //outfit.push_back(tops[rand() % tops.size()]);
-    //outfit.push_back(bottoms[rand() % bottoms.size()]);
-    //outfit.push_back(shoes[rand() % shoes.size()]);
 
     uniform_int_distribution<int> choiceDist(0, 1);
     int rando = choiceDist(gen);
