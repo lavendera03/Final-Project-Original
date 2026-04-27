@@ -32,8 +32,7 @@ Compiling and running the HTML version of ForecastFits:
 4. Start building your closet! 
 
 ## Example Usage
-(Insert Youtube Link of Project Demo Video)
-Screenshots of Program
+(https://drive.google.com/file/d/1Rr54SM9UGLGlJVh3PEhH-3jNpN0K44XG/view?usp=sharing)
 
 ## AI Usage Links
 - [Help with debugging text based version](https://chatgpt.com/share/69cff7b2-f2ec-8327-bf8b-5e266d535c92)
