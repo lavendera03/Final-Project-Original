@@ -25,3 +25,4 @@ Screenshots of Program
 ## AI Usage Links
 - [Help with debugging text based version](https://chatgpt.com/share/69cff7b2-f2ec-8327-bf8b-5e266d535c92)
 - [Converting program to WASM](https://claude.ai/share/ba9d5c7a-7ab5-4245-9580-65497343ce14)
+- [Saving Outfits to txt file](https://chatgpt.com/c/69ded9dc-2d6c-8326-9337-38eb856f550f)
