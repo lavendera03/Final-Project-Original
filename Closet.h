@@ -83,6 +83,9 @@ void Closet<T>::showOutfits() {
 // -------------------- ADD CLOTHING --------------------
 template <typename T>
 void Closet<T>::addClothing() {
+    /*
+    adds an item to user's closet
+    */
 
     cout << "\n==============================\nAnswer these questions about your item!\n" << endl;
     // string test;
@@ -251,6 +254,9 @@ void Closet<T>::addClothing() {
 // -------------------- REMOVE ITEM --------------------
 template <typename T>
 void Closet<T>::removeItem(string name) {
+    /* removes an item from a user's closet
+        - name: the string name of the item a user wants to remove
+    */
     bool exists = false;
     int index = -1;
     for(int i = 0; i < closetItems.size(); i++ ){
@@ -273,6 +279,13 @@ void Closet<T>::removeItem(string name) {
 // -------------------- GENERATE OUTFIT --------------------
 template <typename T>
 vector<Clothing*> Closet<T>::generateOutfit(int dressiness, int avgTemp) {
+    /* generates an outfit based on what is in the user's closet
+            - dressiness: an int representing a user's desired level of dressiness
+            - avgTemp: average temperature for the day
+            - vector<Clothing*>: the vector returned containing the generated outfit
+    
+    */
+
 
     vector<Clothing*> outfit;
     vector<Clothing*> tops;

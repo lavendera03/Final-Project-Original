@@ -11,34 +11,50 @@ Clothing::Clothing(string name, string type, string color, bool pattern, int war
 //clothing methods
 
 string Clothing::getColor(){
+    /* returns color of a clothing item
+    */
     return color;
 }
 
 bool Clothing::getPattern(){
+    /* returns true if a clothing item is patterned
+    */
     return pattern;
 }
 
 bool Clothing::getBasic() {
+    /* returns true if a clothing item is a basic
+    */
     return basic;
 }
 
 int Clothing::getWarmth(){
+    /* returns the warmth level of a piece of clothing
+    */
     return warmth_Level;
 }
 
 bool Clothing::getRaining(){
+    /* returns true if the item would be worn in the rain
+    */
     return raining;
 }
 
 int Clothing::getDressiness(){
+    /* returns the level of dressiness an item is
+    */
     return dressiness;
 }
 
 string Clothing::getType(){
+    /* returns the type of an item
+    */
     return type;
 }
 
 string Clothing::getName(){
+    /* returns the name of a clothing item
+    */
     return name;
 }
 
@@ -49,10 +65,14 @@ Top::Top(string name, string type, string color, bool pattern, int warmth_Level,
       sleeve_length(sleeve_length) {}
 
 string Top::getSleeveLength(){
+    /* returns the sleeve length of a shirt
+    */
     return sleeve_length;
 }
 
 string Top::itemDescription(){
+    /* returns the item description for a top
+    */
     string desc = "This top is ";
     desc += getColor();
     if (getPattern())
@@ -67,6 +87,8 @@ string Top::itemDescription(){
 }
 
 string Top::serialize() {
+    /* returns a serialized version of top
+    */
     return "Top," + getName() + "," + getType() + "," + getColor() + "," +
            to_string(getPattern()) + "," + to_string(getWarmth()) + "," +
            to_string(getRaining()) + "," + to_string(getBasic()) + "," +
@@ -78,14 +100,20 @@ Bottom::Bottom(string name, string type, string color, bool pattern, int warmth_
       shorts(shorts), skirt(skirt) {}
 
 bool Bottom::getShort(){
+    /* returns true if a bottom is a short
+    */
     return shorts;
 }
 
 bool Bottom::getSkirt(){
+    /* returns true if a bottom is a skirt
+    */
     return skirt;
 }
 
 string Bottom::itemDescription(){
+    /* returns the item description of a bottom
+    */
     string desc = "This bottom is ";
     desc += getColor();
     if (getPattern())
@@ -104,6 +132,8 @@ string Bottom::itemDescription(){
 }
 
 string Bottom::serialize() {
+    /* Returns a serialized version of bottom
+    */
     return "Bottom," + getName() + "," + getType() + "," + getColor() + "," +
            to_string(getPattern()) + "," + to_string(getWarmth()) + "," +
            to_string(getRaining()) + "," + to_string(getBasic()) + "," +
@@ -116,10 +146,14 @@ Dress::Dress(string name, string type, string color, bool pattern, int warmth_Le
       length(length) {}
 
 string Dress::getLength(){
+    /* returns a string holding the length of a dress
+    */
     return length;
 }
 
 string Dress::itemDescription(){
+    /* returns an item description of dress
+    */
     string desc = "This dress is ";
     desc += getColor();
     if (getPattern())
@@ -133,6 +167,8 @@ string Dress::itemDescription(){
 }
 
 string Dress::serialize() {
+    /* returns a serialized version of dress
+    */
     return "Dress," + getName() + "," + getType() + "," + getColor() + "," +
            to_string(getPattern()) + "," + to_string(getWarmth()) + "," +
            to_string(getRaining()) + "," + to_string(getBasic()) + "," +
@@ -144,14 +180,20 @@ Coat::Coat(string name, string type, string color, bool pattern, int warmth_Leve
       length(length), waterproof(waterproof){}
 
 string Coat::getLength(){
+    /* returns a string version of the length of a dress
+    */
     return length;
 }
 
 bool Coat::getWaterproof(){
+    /* returns true if a coat is waterproof
+    */
     return waterproof;
 }
 
 string Coat::itemDescription(){
+    /* returns an itemp description of coat
+    */
     string desc = "This coat is ";
     desc += getColor();
     if (getPattern())
@@ -167,6 +209,8 @@ string Coat::itemDescription(){
 }
 
 string Coat::serialize() {
+    /* returns a serialized version of coat
+    */
     return "Coat," + getName() + "," + getType() + "," + getColor() + "," +
            to_string(getPattern()) + "," + to_string(getWarmth()) + "," +
            to_string(getRaining()) + "," + to_string(getBasic()) + "," +
@@ -178,18 +222,26 @@ Shoes::Shoes(string name, string type, string color, bool pattern, int warmth_Le
       openToe(openToe), heel(heel), sneaker(sneaker) {}
 
 bool Shoes::getOpenToe(){
+    /* returns true if a shoe is open toed
+    */
     return openToe;
 }
 
 bool Shoes::getHeel(){
+    /* returns true if a shoe is a heel
+    */
     return heel;
 }
 
 bool Shoes::getSneaker(){
+    /* returns true if a shoe is a sneaker
+    */
     return sneaker;
 }
 
 string Shoes::itemDescription(){
+    /* returns an item description of shoes
+    */
     string desc = "These shoes are ";
     desc += getColor();
     if(getHeel()){
@@ -210,6 +262,8 @@ string Shoes::itemDescription(){
 }
 
 string Shoes::serialize() {
+    /* returns a serialized version of shoes
+    */
     return "Shoes," + getName() + "," + getType() + "," + getColor() + "," +
            to_string(getPattern()) + "," + to_string(getWarmth()) + "," +
            to_string(getRaining()) + "," + to_string(getBasic()) + "," +
@@ -222,10 +276,14 @@ Accessories::Accessories(string name, string type, string color, bool pattern, i
       typeAC(typeAC) {}
 
 string Accessories::getType(){
+    /* returns specific type of accesory
+    */
     return typeAC;
 }
 
 string Accessories::itemDescription(){
+    /* returns item description for accessory
+    */
     string desc = "This accesory is a ";
     desc += getColor();
     desc += getType();
@@ -234,6 +292,8 @@ string Accessories::itemDescription(){
 }
 
 string Accessories::serialize() {
+    /* returns serialized version of an accessory
+    */
     return "Accessories," + getName() + "," + getType() + "," + getColor() + "," +
            to_string(getPattern()) + "," + to_string(getWarmth()) + "," +
            to_string(getRaining()) + "," + to_string(getBasic()) + "," +
