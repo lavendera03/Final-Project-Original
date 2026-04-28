@@ -31,6 +31,9 @@ Compiling and running the HTML version of ForecastFits:
 3. Select ForecastFits.html
 4. Start building your closet! 
 
+## UML Diagram
+![UML Diagram](UMLDiagram.png)
+
 ## Example Usage
 (https://drive.google.com/file/d/1Rr54SM9UGLGlJVh3PEhH-3jNpN0K44XG/view?usp=sharing)
 
