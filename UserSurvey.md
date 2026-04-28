@@ -274,7 +274,7 @@ Program Description: Our program generates outfits for users based on the clothi
 
     ```4 - It may be user error because I didn't have a lot of items, but some weathers/dressiness levels did not have outifts for them.```
 
-5.  *How easy was it to save the outfit in the closet for later on a scale of 1(Extremely **difficult**) to 5 (Extremely **intuitive**)?*
+5.  *How easy was it to save the outfit in the closet for later on a scale of 1(Extremely **difficult**) to 5 (Extremely **intuitive**)*
 
     ```5```
 
@@ -325,4 +325,21 @@ Top requested improvements:
 
 
 ### Feedback for Final Version
- - TO BE ADDED ...
+#### Summary
+Overall reception was positive (composite rating across all six measures = **4.8**).
+
+Common Feedback: 
+- Adding/Removing Clothing was a lot easier than the text based version
+- Some users wished they could still add outfits themselves rather than relying on the generator
+        - This feature was an unintentional side effect of the early save outfit method
+- Several users found that generating outfits that were weather and occasion appropriate was still difficult
+  
+#### Lessons Learned and Potential Improvements
+Designing an algorithm to generate stylish outfits based on weather and dressiness was harder than we thought it would be. Figuring out what information is needed to consistently draft a good outfit and which information can be ignored seemed simple at first. However, there are a lot of edge cases when it comes to weather than make the process a lot more variable. We were able to get a working generate outfit method, but it can definitely still be improved upon. Moreover, converting a C++ program that relies primarily on user input/output to WASM is incredibly difficult to do. It might have been helpful to start with the WASM conversion process in mind. 
+
+
+Potential Improvements:
+
+- Generate outfit algorithm
+- Implementing images in the design
+- Being able to edit existing items and outfits
