@@ -272,7 +272,7 @@ Program Description: Our program generates outfits for users based on the clothi
 
 4.  *How easy was it to generate an outfit on a scale of 1(Extremely **difficult**) to 5 (Extremely **intuitive**)?*
 
-    ```4 - It may be user error because I didn't have a lot of items, but some weathers/dressiness levels didn't have outifts for them.```
+    ```4 - It may be user error because I didn't have a lot of items, but some weathers/dressiness levels did not have outifts for them.```
 
 5.  *How easy was it to save the outfit in the closet for later on a scale of 1(Extremely **difficult**) to 5 (Extremely **intuitive**)?*
 
