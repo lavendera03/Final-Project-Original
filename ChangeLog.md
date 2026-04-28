@@ -1,20 +1,25 @@
 ## CMSC 240 Final Project - Forecast Fits
 ### Entry #1 - 03/29/2026 
-- Milijana - Finalized the UML Diagrams
-- Alicia - Wrote starting code for closet.h & closet.cpp 
-- Sydney - Wrote starting code for clothing.h & clothing.cpp
+- Finalized the UML Diagrams
+- Wrote starting code for closet.h & closet.cpp 
+- Wrote starting code for clothing.h & clothing.cpp
 
 ### Entry #2 - 03/31/2026
-- blah
+- Implemented methods to clothing.cpp
+- Implemented removeItem method
  
 ### Entry #3 - 04/02/2026
-- blah
+- Implementing generate outfit function
 
 ### Entry #4 - 04/03/2026
-- blah
+- Editing user prompting statements.
+- Moving all method implementation to closet header file (bc it uses templates)
+- Adding main.cpp for main menu loop
+- Major debugging for class integration in main.cpp
 
 ### Entry #5 - 04/05/2026
-- Debugging closet and clothing classes.  
+- Debugging closet and clothing classes. 
+- Adding UserProfile and AuthSystems classes and h files 
 
 ### Entry #6 - 04/07/2026
 - Edited user prompting statements for clarity and brevity
@@ -53,8 +58,17 @@
 - Updated readme with installation instructions
 - Updated change log
 
-### Entry #15 - 04/25/2026
-- Collected User 4 survey feedback
+### Entry #15 - 04/26/2026
+- Recorded demo video
+- Added to readme
+- Edited change log
+- Collected users 1,2,3, and 4 final feedback
+
+### Entry #16 - 04/27/2026
+- Added Docstrings
+
+### Entry #16 - 04/27/2026
+- Finalized ChangeLog formatting & README
 
 **NOTES:**
 By 4/6 - The function to view the closet will be completed
