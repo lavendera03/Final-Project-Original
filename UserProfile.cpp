@@ -5,14 +5,26 @@
 
 using namespace std;
 
-// default constructor
+/* Deafult constructor which creates an empty UserProfile.
+    */
 UserProfile::UserProfile() {}
 
-// parametrized constructor
+/* Parametrized constructor which creates a UserProfile with 
+    a given username and zipcode.
+        - username: The user's account name.
+        - zipCode: The user's location as a zip code.
+    */
 UserProfile::UserProfile(string username, string zipCode)
     : username(username), zipCode(zipCode) {}
 
-// user trying to enter using a username and password
+ /* Attempts to log in with the provided username and password.
+        - username: The user's account name to look up.
+        - password: The user's password to verify.
+        The method verifies the provided information against 
+        existing txt files. 
+        The username must be the name of the .txt file 
+        and the password the first line of the file.
+    */
 bool UserProfile::login(const string& inputUsername, const string& inputPassword) {
     username = inputUsername;
     if (!loadFromFile()) {
@@ -27,26 +39,35 @@ bool UserProfile::login(const string& inputUsername, const string& inputPassword
     return true;
 }
 
-// saving to file when logging out
+/* Saves the user's profile to the respective .txt file and
+    logs them out.
+    */
 void UserProfile::logout() {
     saveToFile();
     cout << "\nLogged out. Goodbye, " << username << "!\n";
 }
 
-// getters
+/* Returns the user's zipCode.
+    */
 string UserProfile::getLocation() {
     return zipCode;
 }
 
-Closet<Clothing>& UserProfile::getCloset() {
-    return closet;
-}
-
+/* Returns the user's username.
+    */
 string UserProfile::getUsername() {
     return username;
 }
 
-// saves username, password, zipCode to a txt file
+/* Returns a reference to the user's closet.
+    */
+Closet<Clothing>& UserProfile::getCloset() {
+    return closet;
+}
+
+/* Saves the profile (username, password, zipcode) 
+to a .txt file named "<username>.txt".
+    */
 void UserProfile::saveToFile() {
     ofstream file(username + ".txt");
     if (!file.is_open()) {
@@ -70,9 +91,9 @@ void UserProfile::saveToFile() {
     }
 }
 
-
-
-// loads profile data from file — returns false if file doesn't exist
+/* Loads profile data from the respective .txt file.
+    Returns false if file doesn't exist.
+    */
 bool UserProfile::loadFromFile() {
     ifstream file(username + ".txt");
     if (!file.is_open()) {

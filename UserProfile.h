@@ -19,8 +19,9 @@ public:
     string getUsername();
 
     Closet<Clothing>& getCloset();
-    
+
     void saveToFile();
+
     bool loadFromFile();
 private:
     string username;
